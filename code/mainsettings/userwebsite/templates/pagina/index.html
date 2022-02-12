@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html style="font-size: 16px;">
   <head>
+    {% load static %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.12.0/css/ol.css" type="text/css">
+    <style>
+      .map {
+        height: 600px;
+        width: 100%;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.12.0/build/ol.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta name="keywords" content="Menu">
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
     <title>Home</title>
-    <link rel="stylesheet" href="nicepage.css" media="screen">
-<link rel="stylesheet" href="Home.css" media="screen">
-    <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
-    <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+    <link rel="stylesheet" href="{% static 'userwebsite/homepage/nicepage.css' %}" media="screen">
+    <link rel="stylesheet" href="{% static 'userwebsite/homepage/Home.css' %}" media="screen">
+    <script class="u-script" type="text/javascript" src="{% static 'userwebsite/jquery.js' %}" defer=""></script>
+    <script class="u-script" type="text/javascript" src="{% static 'userwebsite/homepage/nicepage.js' %}" defer=""></script>
     <meta name="generator" content="Nicepage 4.4.3, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
     
@@ -27,7 +36,7 @@
   </head>
   <body data-home-page="Home.html" data-home-page-title="Home" class="u-body u-xl-mode"><header class="u-clearfix u-header u-palette-1-base u-header" id="sec-e378"><div class="u-clearfix u-sheet u-sheet-1">
         <a class="u-image u-logo u-image-1" data-image-width="228" data-image-height="168">
-          <img src="images/rivereye.png" class="u-logo-image u-logo-image-1">
+          <img src="{% static 'userwebsite/homepage/images/rivereye.png' %}" class="u-logo-image u-logo-image-1">
         </a>
         <p class="u-text u-text-1">RiverEye APP</p>
       </div></header>
@@ -77,9 +86,9 @@
               </div>
             </div>
             <div class="u-align-left u-container-style u-layout-cell u-right-cell u-size-40 u-layout-cell-2" src="">
-              <div class="u-container-layout u-container-layout-2">
-                <div id="map" class="u-container-style u-expanded-width u-group u-white u-group-1">
-                  <div class="u-container-layout u-container-layout-3"></div>
+              <div class="map u-container-layout u-container-layout-2">
+                <div  class="map u-container-style u-expanded-width u-group u-white u-group-1">
+                  <div id="map" class="map"></div>
                 </div>
               </div>
             </div>
@@ -103,5 +112,6 @@
         <span>Website Builder Software</span>
       </a>. 
     </section>
+    <script type="text/javascript" src="{% static 'userwebsite/openlayers.js' %}" defer=""></script>
   </body>
 </html>
