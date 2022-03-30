@@ -48,7 +48,8 @@
 .u-section-1 .u-group-4 {
   width: 628px;
   min-height: 77px;
-  margin: -104px auto 0 261px;
+  height: auto;
+  margin: -104px auto 0;
 }
 
 .u-section-1 .u-container-layout-4 {
@@ -88,15 +89,13 @@
     padding: 38px 26px 38px 25px;
   }
 
+  .u-section-1 .u-group-4 {
+    height: auto;
+  }
+
   .u-section-1 .u-container-layout-4 {
     padding-top: 30px;
     padding-bottom: 30px;
-  }
-}
-
-@media (max-width: 991px) {
-  .u-section-1 .u-group-4 {
-    margin-left: 92px;
   }
 }
 
@@ -113,7 +112,6 @@
 
   .u-section-1 .u-group-4 {
     width: 540px;
-    margin-left: 0;
   }
 }
 
