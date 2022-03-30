@@ -8,14 +8,10 @@
     <meta name="page_type" content="np-template-header-footer-from-plugin">
     {% load static %}
     <title>Home</title>
-<<<<<<< HEAD
     <script class="u-script" type="text/javascript" src="{% static 'userwebsite/shp.js' %}"></script>
     <script class="u-script" type="text/javascript" src="{% static 'userwebsite/proj4.js' %}"></script>
     <script class="u-script" type="text/javascript" src="{% static 'userwebsite/jquery.js' %}"></script>
-    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
-=======
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.12.0/css/ol.css" type="text/css">
->>>>>>> parent of 5be85fa (loading files in js)
     <style>
       .map {
         height: 400px;
@@ -24,12 +20,7 @@
     </style>
     <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.12.0/build/ol.js"></script>
     <link rel="stylesheet" href="{% static 'userwebsite/nicepage.css' %}" media="screen">
-<<<<<<< HEAD
-    <link rel="stylesheet" href="{% static 'userwebsite/Page-1.css' %}" media="screen">
-=======
     <link rel="stylesheet" href="{% static 'userwebsite/Home.css' %}" media="screen">
-    <script class="u-script" type="text/javascript" src="{% static 'userwebsite/jquery.js' %}" defer=""></script>
->>>>>>> parent of 5be85fa (loading files in js)
     <!-- <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script> -->
     <script type="text/javascript" src="{% static 'userwebsite/nicepage.js' %}" defer=""></script>
     <meta name="generator" content="Nicepage 4.4.3, nicepage.com">
@@ -39,42 +30,69 @@
     <script type="application/ld+json">{
 		"@context": "http://schema.org",
 		"@type": "Organization",
-		"name": ""
+		"name": "",
+		"logo": "images/rivereye.png"
 }</script>
     <meta name="theme-color" content="#478ac9">
     <meta property="og:title" content="Home">
     <meta property="og:type" content="website">
   </head>
-  <body class="u-body u-xl-mode">
-    <section class="u-clearfix u-section-1" id="sec-523b">
-      <div class="u-container-style u-expanded-width u-group u-palette-2-base u-group-1">
-        <div class="u-container-layout u-container-layout-1">
-          <div id="map" class="map"></div>
-          <div class="u-container-style u-group u-image u-image-1" data-image-width="228" data-image-height="168">
-            <div class="u-container-layout u-container-layout-2"></div>
-          </div>
-          <div class="u-container-style u-group u-group-3">
-            <div class="u-container-layout u-valign-middle u-container-layout-3">
-              <a href="https://nicepage.com/k/hospital-website-templates" class="u-border-none u-btn u-btn-round u-button-style u-hover-custom-color-1 u-palette-4-base u-radius-50 u-text-custom-color-1 u-text-hover-white u-btn-1"> START analysis</a>
+  <body data-home-page="Home.html" data-home-page-title="Home" class="u-body u-xl-mode"><header class="u-clearfix u-header u-palette-1-base u-header" id="sec-e378"><div class="u-clearfix u-sheet u-sheet-1">
+        <a class="u-image u-logo u-image-1" data-image-width="228" data-image-height="168">
+          <img src="{% static 'userwebsite/images/rivereye.png' %}" class="u-logo-image u-logo-image-1">
+        </a>
+        <p class="u-text u-text-1">RiverEye APP</p>
+      </div></header>
+    <section class="u-clearfix u-section-1" id="sec-715e">
+      <div class="u-clearfix u-expanded-width u-gutter-0 u-layout-spacing-top u-layout-wrap u-layout-wrap-1">
+        <div class="u-layout">
+          <div class="u-layout-row">
+            <div class="u-align-left u-container-style u-layout-cell u-left-cell u-palette-4-base u-size-20 u-layout-cell-1" src="">
+              <div class="u-container-layout u-container-layout-1">
+                <h2 class="u-text u-text-palette-1-base u-text-1">Menu</h2>
+                <div class="u-form u-form-1">
+                  <form action="#" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" source="custom" name="form" style="padding: 10px;">
+                    <div class="u-form-group u-form-name">
+                      <label for="name-026f" class="u-label">Position</label>
+                      <input type="text" placeholder="Position" id="name-026f" name="position" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
+                    </div>
+                    <div class="u-align-left u-form-group u-form-submit">
+                      <a href="#" class="u-btn u-btn-submit u-button-style">Submit</a>
+                      <input type="submit" value="submit" class="u-form-control-hidden">
+                    </div>
+                    <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>
+                    <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try again. </div>
+                    <input type="hidden" value="" name="recaptchaResponse">
+                  </form>
+                </div>
+                <div class="u-form u-form-2">
+                  <form action="#" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" source="custom" name="form" style="padding: 10px;">
+                    <div class="u-form-group u-form-name">
+                      <label for="name-026f" class="u-label">DropDown</label>
+                      <select id="type" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
+                        <option value="Point">Point</option>
+                        <option value="LineString">LineString</option>
+                        <option value="Polygon">Polygon</option>
+                        <option value="Circle">Circle</option>
+                      </select>
+                    </div>
+                    <div class="u-align-left u-form-group u-form-submit">
+                      <a href="#" class="u-btn u-btn-submit u-button-style">Submit</a>
+                      <input type="submit" value="submit" class="u-form-control-hidden">
+                    </div>
+                    <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>
+                    <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try again. </div>
+                    <input type="hidden" value="" name="recaptchaResponse">
+                  </form>
+                </div>
+                <a href="https://nicepage.com/c/real-estate-website-templates" class="u-border-2 u-border-palette-1-base u-btn u-button-style u-hover-palette-1-base u-none u-text-hover-white u-text-palette-1-base u-btn-3">Gogogo</a>
+              </div>
             </div>
-          </div>
-          <div class="u-container-style u-group u-shape-rectangle u-group-4">
-            <div class="u-container-layout u-container-layout-4">
-              <div class="u-expanded-width u-radius-10 u-shape u-shape-round u-white u-shape-1"></div>
-              <div class="u-absolute-hcenter u-expanded u-form">
-                <form action="#" method="POST" class="u-clearfix u-form-horizontal u-form-spacing-15 u-inner-form" style="padding: 15px;" source="custom">
-                  <div class="u-form-group u-form-name u-label-none">
-                    <label for="name-ef64" class="u-form-control-hidden u-label u-text-palette-1-dark-2 u-label-1"></label>
-                    <input type="text" placeholder="Location: -23.5613, -46.7308" id="name-ef64" name="name" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-palette-4-base u-text-custom-color-1 u-input-1" required="">
-                  </div>
-                  <div class="u-form-group u-form-submit">
-                    <a href="#" class="u-border-none u-btn u-btn-submit u-button-style u-hover-custom-color-1 u-palette-4-base u-text-custom-color-1 u-text-hover-white u-btn-2">Submit</a>
-                    <input type="submit" value="submit" class="u-form-control-hidden">
-                  </div>
-                  <div class="u-form-send-message u-form-send-success">#FormSendSuccess</div>
-                  <div class="u-form-send-error u-form-send-message">#FormSendError</div>
-                  <input type="hidden" value="" name="recaptchaResponse">
-                </form>
+            <div class="u-align-left u-container-style u-layout-cell u-right-cell u-size-40 u-layout-cell-2" src="">
+              <div class="u-container-layout u-container-layout-2">
+                <div id="map" class="map">
+                  
+                </div>
               </div>
             </div>
           </div>
@@ -84,8 +102,7 @@
     
     
     <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-9830"><div class="u-clearfix u-sheet u-sheet-1">
-        <p class="u-small-text u-text u-text-variant u-text-1">River Eye Group:<br>Artur André - Diego Soler - Luan Casagrande<br><b>Goodbye and Thanks For All The Fish</b>
-        </p>
+        <p class="u-small-text u-text u-text-variant u-text-1">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
       </div></footer>
     <section class="u-backlink u-clearfix u-grey-80">
       <a class="u-link" href="https://nicepage.com/website-templates" target="_blank">
@@ -98,5 +115,6 @@
         <span>Website Builder Software</span>
       </a>. 
     </section>
+    <script type="text/javascript" src="{% static 'userwebsite/openlayers.js' %}"></script>
   </body>
 </html>
