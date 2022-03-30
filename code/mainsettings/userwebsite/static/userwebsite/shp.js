@@ -23099,7 +23099,7 @@ var cache = new Cache({
   max: 20
 });
 
-async function toBuffer(b) {
+function toBuffer(b) {
   if (!b) {
     throw new Error('forgot to pass buffer');
   }
@@ -23114,10 +23114,6 @@ async function toBuffer(b) {
       return Buffer.from(b);
     }
     return Buffer.from(b.buffer);
-  }
-  if (b instanceof Blob)
-  {
-    return b.arrayBuffer();
   }
 }
 
@@ -23236,8 +23232,8 @@ shp.getShapefile = function(base, whiteList) {
     });
   }
 };
-shp.parseShp = async function(shp, prj) {
-  shp = await toBuffer(shp);
+shp.parseShp = function(shp, prj) {
+  shp = toBuffer(shp);
   if (Buffer.isBuffer(prj)) {
     prj = prj.toString();
   }
@@ -23253,8 +23249,8 @@ shp.parseShp = async function(shp, prj) {
   return parseShp(shp, prj);
 
 };
-shp.parseDbf = async function(dbf, cpg) {
-  dbf = await toBuffer(dbf);
+shp.parseDbf = function(dbf, cpg) {
+  dbf = toBuffer(dbf);
   return parseDbf(dbf, cpg);
 };
 module.exports = shp;
