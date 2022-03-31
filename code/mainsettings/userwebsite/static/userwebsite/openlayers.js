@@ -56,10 +56,14 @@ var map = new ol.Map({
     target: 'map',
     layers: [raster, vector],
     view: new ol.View({
-      center: ol.proj.fromLonLat([-97.7459463, 30.2838094]),
-      zoom: 18
+      // center: ol.proj.fromLonLat([-97.7459463, 30.2838094]),
+      // center: ol.proj.fromLonLat([-47.48258,-24.03863]), //próximo
+       center: [-5280244.47922211, -2760133.33496918],
+      zoom: 14.667234241513816
     })
   });
+
+  
 
 const modify = new ol.interaction.Modify({source: source});
 map.addInteraction(modify);
@@ -89,3 +93,13 @@ function addInteractions() {
 
 addInteractions();
 
+$(map.getViewport()).css('position', 'absolute');
+  $(map.getViewport()).css('top', '0');
+  $('#demo0').css('position', 'absolute');
+  $('#demo0').css('top', '0');
+
+$
+  $('#btnAnalisis').click(function(){
+    $(map.getViewport()).toggle('hidden');
+    $('#demo0').toggle('hidden');
+  });

@@ -1,4 +1,8 @@
- .u-section-1 {
+.overmap{
+  z-index: 1;
+}
+
+.u-section-1 {
   min-height: 723px;
 }
 
