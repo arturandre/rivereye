@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.4.13)  19 APR 2022 16:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.4.13)  19 APR 2022 16:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -366,18 +366,44 @@ Package pdftex.def Info: map.jpg  used on input line 101.
 [1
 
 {C:/Users/diego/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./LogoRiverE
-ye.jpg (PNG copy)> <./map.jpg>] [2] (cover.aux)
-Package rerunfilecheck Info: File `cover.out' has not changed.
-(rerunfilecheck)             Checksum: 3B8CE39966FE1AF50CA013240A88B2E7;609.
+ye.jpg (PNG copy)> <./map.jpg>]
+File: LogoRiverEye.jpg Graphic file (type jpg)
+<use LogoRiverEye.jpg>
+Package pdftex.def Info: LogoRiverEye.jpg  used on input line 109.
+(pdftex.def)             Requested size: 190.2476pt x 190.26111pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 112--119
+
+ []
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <14.4> on input line 131.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 131.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 131.
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 131.
+
+[2] (cover.aux)
+
+Package rerunfilecheck Warning: File `cover.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `cover.out':
+(rerunfilecheck)             Before: 3B8CE39966FE1AF50CA013240A88B2E7;609
+(rerunfilecheck)             After:  AB46AB4B5D517076A19E00B8A345EED0;720.
  ) 
 Here is how much of TeX's memory you used:
- 8837 strings out of 478582
- 141376 string characters out of 2844344
- 440842 words of memory out of 3000000
- 26924 multiletter control sequences out of 15000+600000
- 478456 words of font info for 40 fonts, out of 8000000 for 9000
+ 8863 strings out of 478582
+ 141834 string characters out of 2844344
+ 439993 words of memory out of 3000000
+ 26939 multiletter control sequences out of 15000+600000
+ 484654 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,11n,63p,309b,386s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 60i,11n,63p,309b,323s stack positions out of 10000i,1000n,20000p,200000b,80000s
 {C:/Users/diego/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}<C:
 /Users/diego/AppData/Local/Programs/MiKTeX/fonts/type1/bitstrea/charter/bchb8a.
 pfb><C:/Users/diego/AppData/Local/Programs/MiKTeX/fonts/type1/bitstrea/charter/
@@ -385,9 +411,9 @@ bchr8a.pfb><C:/Users/diego/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmmi10.pfb><C:/Users/diego/AppData/Local/Programs/MiKTeX/fonts/type1/p
 ublic/amsfonts/cm/cmsy7.pfb><C:/Users/diego/AppData/Local/Programs/MiKTeX/fonts
 /type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on cover.pdf (2 pages, 151138 bytes).
+Output written on cover.pdf (2 pages, 151939 bytes).
 PDF statistics:
- 73 PDF objects out of 1000 (max. 8388607)
- 7 named destinations out of 1000 (max. 500000)
+ 76 PDF objects out of 1000 (max. 8388607)
+ 8 named destinations out of 1000 (max. 500000)
  43 words of extra memory for PDF output out of 10000 (max. 10000000)
 
