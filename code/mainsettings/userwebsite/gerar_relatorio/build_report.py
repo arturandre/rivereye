@@ -1,3 +1,7 @@
+import argparse
+import os
+import subprocess
+
 def base_structure(results):
     content = r"""\documentclass{article}
 
@@ -109,10 +113,17 @@ def base_structure(results):
     """
     return content%results
 
+area_counter = 0
 def generate_result(area_results):
-    area_results['total_area'] = area_results['irregular_area'] + area_results['river_area'] + area_results['veg_area'] + area_results['nveg_area']
+    global area_counter
+    area_counter += 1
+    area_results['area_counter'] = area_counter
+    area_results['total_area'] = area_results['irregular_area'] +\
+        area_results['river_area'] +\
+        area_results['veg_area'] +\
+        area_results['nveg_area']
     area_results['estimated_cost'] = area_results['irregular_area'] * area_results['cost']
-    content = r"""\subsection{Area %(i)s}
+    content = r"""\subsection{Area %(area_counter)s}
 
     \begin{minipage}{0.5\linewidth}
 
@@ -134,5 +145,50 @@ def generate_result(area_results):
     
     """
 
-    return content%area_results
+    return content % area_results
     
+def create_pdf_report(area_results, output_path=""):
+    """
+    Based on main.py
+
+    area_results = [{
+            'gps_S' : 23.5558,
+            'gps_W' : 46.6396,
+            'irregular_area' :  2,
+            'river_area' :  1,
+            'veg_area' :  2,
+            'nveg_area' :  5,
+            'fname' :  'map.jpg',
+            'cost' :  20000}]
+    """
+    os.makedirs(output_path, exist_ok=True)
+
+    cover_tex_file = os.path.join(output_path, 'cover.tex')
+    cover_pdf_file = os.path.join(output_path, 'cover.pdf')
+
+    results = ""
+    for area_result in area_results:
+        results += generate_result(area_result)
+
+    """
+    Generate the report
+    """
+    content = base_structure({'result':results})
+    with open(cover_tex_file,'w') as f:
+        f.write(content)
+
+    ###############################################################################
+
+    cmd = ['pdflatex', '-interaction', 'nonstopmode', '-output-directory', output_path, cover_tex_file]
+    # proc = subprocess.Popen('dir', cwd=os.getcwd())
+    print(os.getcwd())
+    proc = subprocess.Popen(cmd, shell = True )
+
+    proc.communicate()
+
+    retcode = proc.returncode
+    if not retcode == 0:
+        os.unlink(cover_pdf_file)
+        raise ValueError('Error {} executing command: {}'.format(retcode, ' '.join(cmd)))
+
+    return cover_pdf_file
