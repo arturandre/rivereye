@@ -89,16 +89,14 @@ const modify = new ol.interaction.Modify({source: source});
 map.addInteraction(modify);
 
 let draw, snap; // global so we can remove them later
-//const typeSelect = document.getElementById('type');
 
 function addInteractions() {
   draw = new ol.interaction.Draw({
-    source: source,
-    //type: typeSelect.value,
-    type: "Polygon",
+    source: source, type: "Polygon",
   });
-  map.addInteraction(draw);
   snap = new ol.interaction.Snap({source: source});
+
+  map.addInteraction(draw);
   map.addInteraction(snap);
 }
 
@@ -118,9 +116,9 @@ async function readBinaryFile(url)
 
 async function load_demo0()
 {
-  let shpurl = "http://localhost:8000/static/mapretriever/demo/map0/0_buffer.shp";
-  let dbfurl = "http://localhost:8000/static/mapretriever/demo/map0/0_buffer.dbf";
-  let prjurl = "http://localhost:8000/static/mapretriever/demo/map0/0_buffer.prj";
+  let shpurl = "http://localhost:8000/static/mapretriever/demo/map0/0_out.shp";
+  let dbfurl = "http://localhost:8000/static/mapretriever/demo/map0/0_out.dbf";
+  let prjurl = "http://localhost:8000/static/mapretriever/demo/map0/0_out.prj";
   
   
   let shpBuffer = await readBinaryFile(shpurl);
@@ -153,7 +151,7 @@ async function load_demo0()
   {
     featureCollection[i].getGeometry().transform("EPSG:4326", "EPSG:3857");
     try {
-      let myfldcode = featureCollection[i].getProperties()["MYFLD"];
+      let myfldcode = featureCollection[i].getProperties()["MYFLD"]-1;
       featureCollection[i].setStyle(fldStyles[myfldcode]);
     } catch (error) {
       console.error(error);
