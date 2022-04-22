@@ -52,10 +52,10 @@ const vector2 = new ol.layer.Vector({
   source: source2,
   style: new ol.style.Style({
     fill: new ol.style.Fill({
-      color: 'rgba(255, 0, 0, 0.2)',
+      color: 'rgba(255, 255, 0, 0.0)',
     }),
     stroke: new ol.style.Stroke({
-      color: '#ffcc33',
+      color: '#33ff33',
       width: 2,
     }),
     image: new ol.style.Circle({
@@ -114,6 +114,29 @@ async function readBinaryFile(url)
   });
 }
 
+let fldStyles = [
+  new ol.style.Style({ // 0 - Blue (River)
+    fill: new ol.style.Fill({
+      color: 'rgba(0, 0, 255, 0.5)',
+    })
+  }),
+  new ol.style.Style({
+    fill: new ol.style.Fill({ // 1 - Green (Forest?)
+      color: 'rgba(0, 255, 0, 0.5)',
+    })
+  }),
+  new ol.style.Style({ //2 - Red (Irregular?)
+    fill: new ol.style.Fill({
+      color: 'rgba(255, 0, 0, 0.5)',
+    })
+  }),
+  new ol.style.Style({ //3 - Yellow (Anything?)
+    fill: new ol.style.Fill({
+      color: 'rgba(255, 255, 0, 0.5)',
+    })
+  }),
+];
+
 async function load_demo0()
 {
   let shpurl = "http://localhost:8000/static/mapretriever/demo/map0/0_out.shp";
@@ -127,26 +150,13 @@ async function load_demo0()
   let featureCollection =
     shp.combine([shp.parseShp(shpBuffer, prjStr),shp.parseDbf(dbfBuffer)]);
 
-  let fldStyles = [
-    new ol.style.Style({ //0 - Yellow (Anything?)
-      fill: new ol.style.Fill({
-        color: 'rgba(255, 255, 0, 0.5)',
-      })
-    }),
-    new ol.style.Style({ // 1 - Blue (River)
-      fill: new ol.style.Fill({
-        color: 'rgba(0, 0, 255, 0.5)',
-      })
-    }),
-    new ol.style.Style({
-      fill: new ol.style.Fill({ // 2 - Green (Forest?)
-        color: 'rgba(0, 255, 0, 0.5)',
-      })
-    })
-  ];
-  
   
   featureCollection = new ol.format.GeoJSON().readFeatures(featureCollection);
+  add_geojson_to_source2(featureCollection);
+}
+
+function add_geojson_to_source2(featureCollection)
+{
   for (let i = 0; i < featureCollection.length; i++)
   {
     featureCollection[i].getGeometry().transform("EPSG:4326", "EPSG:3857");
@@ -178,6 +188,37 @@ $(map.getViewport()).css('position', 'absolute');
 
 
 $('#btnAnalisis').click(function(){
-  $(map.getViewport()).toggle('hidden');
-  $('#demo0').toggle('hidden');
+  //$(map.getViewport()).toggle('hidden');
+  //$('#demo0').toggle('hidden');
+  //$('#btnReport').hide();
+  $('#btnReport').show();
+  get_geom_for_sel_bbox();
 });
+
+$('#btnReport').click(function(){
+  mockup_data = [{
+    "gps_S" : 23.5558,
+    "gps_W" : 46.6396,
+    "irregular_area" : 2,
+    "river_area" : 1,
+    "veg_area" : 2,
+    "nveg_area" : 5}];
+  
+  
+});
+
+async function get_geom_for_sel_bbox(){
+  let url = "http://127.0.0.1:8000/filterbybbox";
+
+  let format = new ol.format["GeoJSON"]();
+  let geoJsonStr = format.writeFeatures(source.getFeatures(), { dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
+
+  var response = await $.post(url, geoJsonStr, function(featureCollections){
+    console.log(featureCollections);
+    for (let featureCollection in featureCollections){
+      featureCollection = featureCollections[featureCollection];
+      featureCollection = new ol.format.GeoJSON().readFeatures(featureCollection);
+      add_geojson_to_source2(featureCollection);
+    }
+  });
+}

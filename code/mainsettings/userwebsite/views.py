@@ -1,9 +1,19 @@
+from ast import Mult
+from http.client import HTTPResponse
 import json
 from django.shortcuts import render
 from userwebsite.gerar_relatorio.build_report import create_pdf_report
-from django.http import FileResponse
+from django.http import FileResponse, JsonResponse
+
+from django.contrib.gis.geos import MultiPolygon, Polygon
+from django.core.serializers import serialize
+import shapely
+from shapely import wkt
+from shapely.ops import clip_by_rect
 
 from django.views.decorators.csrf import csrf_exempt
+
+from .models import Riversides
 
 # Create your views here.
 
@@ -35,3 +45,24 @@ def get_report(request):
     response = FileResponse(open(outfile, 'rb'))
 
     return response
+
+@csrf_exempt
+def filter_by_bbox(request):
+    aux = request.body.decode("utf-8")
+    aux = json.loads(aux)
+    results = []
+    for poly in aux['features']:
+        poly = Polygon(poly['geometry']['coordinates'][0])
+        #aux = GEOSGeometry(poly['features'])
+        result = Riversides.objects.filter(poly__intersects=poly)
+        for geom in result:
+            shapelyGeom = wkt.loads(geom.poly.wkt)
+            clipped = clip_by_rect(shapelyGeom, *poly.extent)
+            if isinstance(clipped, shapely.geometry.Polygon):
+                clipped = shapely.geometry.multipolygon.MultiPolygon([clipped])
+            clipped = clipped.wkt
+            geom.poly = MultiPolygon.from_ewkt(clipped)
+        result = serialize('geojson', result, geometry_field='poly', fields=('MYFLD',))
+        result = json.loads(result)
+        results.append(result)
+    return JsonResponse(results, safe=False)

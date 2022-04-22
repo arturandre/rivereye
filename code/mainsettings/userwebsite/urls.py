@@ -5,4 +5,5 @@ urlpatterns = [
     path('',views.Home, name='Home'),
     path('home',views.Home2, name='Home2'),
     path('get_report',views.get_report, name='get_report'),
+    path('filterbybbox',views.filter_by_bbox, name='filterbybbox'),
 ]
