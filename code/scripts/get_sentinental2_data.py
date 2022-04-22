@@ -92,7 +92,7 @@ def donwload_data_based_on_geojson(in_shape, in_year, in_month, in_num, in_outpa
         print('It is not possible to create a tmp folder! Please contact DEV team.')
         sys.exit()
 
-    polygons = esri_shp.readShapeFileFromListGeo(in_shape)
+    polygons = esri_shp.read_shape_file_from_list_geo(in_shape)
     listGeos = [item['geometry'] for item in polygons]
     multipolygon = geo_utils.get_multi_polygon(listGeos)
 

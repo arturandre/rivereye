@@ -1,7 +1,7 @@
 from osgeo import ogr, osr
 import copy
 
-def readShapeFileFromListGeo(in_path):
+def read_shape_file_from_list_geo(in_path):
     file = ogr.Open(in_path)
     if file is None:
         return []
