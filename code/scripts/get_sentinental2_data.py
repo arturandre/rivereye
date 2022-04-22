@@ -11,6 +11,20 @@ import sys
 api = SentinelAPI('luancasagrande', '6599Ufsc..')
 
 def download_data(in_footprint, in_date, in_limit):
+    """Auxiliar function to query data usign API
+    ----------
+    in_footprint : str
+        String describing the requested polygons convex hull
+    in_date : tuple datetime
+        Reference and limit datetime
+    in_limit : int
+        Number of samples
+
+    Returns
+    -------
+        Dictionary describing the products sorted by cloud coverage percentage
+    """
+
     products = api.query(in_footprint,
                          date=in_date,
                          platformname='Sentinel-2',
@@ -25,12 +39,23 @@ def download_data(in_footprint, in_date, in_limit):
     return products_df_sorted
 
 
-def crop_data(in_path, in_listPolygons, in_outPath, shpFile):
+def crop_data(in_path, in_listPolygons, in_outPath, in_shpFile):
+    """Crop rasters based on list of polygons and store in the output file
+    ----------
+    in_path : str
+        Input path
+    in_listPolygons : list of OGRgeometries
+        List of polygons used as reference to crop the data
+    in_outPath : str
+        Output path
+    in_shpFile : str
+        Path to shape file used as reference to calculate footprint and crop the data (input polygons)
+    """
     listDirs = os.listdir(in_path)
     fileMask = os.path.join(in_outPath, 'polygons.tif')
     if (not os.path.isdir(in_outPath)):
         os.makedirs(in_outPath)
-    geo_utils.gdal_rasterize(os.path.join(in_path, listDirs[0]), shpFile, fileMask)
+    geo_utils.gdal_rasterize(os.path.join(in_path, listDirs[0]), in_shpFile, fileMask)
     for polygonPos in range(len(in_listPolygons)):
         geo_utils.gdal_translate(fileMask, os.path.join(in_outPath, str(polygonPos) + '_mask.tif'),
                        in_listPolygons[polygonPos].GetEnvelope())
@@ -45,8 +70,19 @@ def crop_data(in_path, in_listPolygons, in_outPath, shpFile):
 
 
 def donwload_data_based_on_geojson(in_shape, in_year, in_month, in_num, in_outpath):
-    """Method that handles arguments
-    :return parsed arguments
+    """Method that download, unzip, and move the data to outpath based on year, month, and number of samples
+        Parameters
+    ----------
+    in_shape : str
+        Path to shape file used as reference to calculate footprint and crop the data (input polygons)
+    in_year : int
+        Year used to query the data
+    in_month : int
+        Month used to query the data
+    in_num : int
+        Number of cases to be downloaded
+    in_outpath : str
+        Output path
     """
     tmp_folder = 'tmp'
     try:
@@ -84,7 +120,9 @@ def donwload_data_based_on_geojson(in_shape, in_year, in_month, in_num, in_outpa
 
 def parse_args():
     """Method that handles arguments
-    :return parsed arguments
+    Returns
+    -------
+        parsed arguments
     """
     ap = argparse.ArgumentParser()
     ap.add_argument("-m", "--month", required=True, type=int,
