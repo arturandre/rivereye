@@ -1,8 +1,7 @@
 from sentinelsat import SentinelAPI, read_geojson, geojson_to_wkt
 import zipfile
 import os
-from util.esri_shp import readShapeFileFromListGeo
-from util.geo_utils import gdal_rasterize, gdal_translate, get_multi_polygon
+from util import esri_shp, geo_utils
 from datetime import date
 import calendar
 import argparse
@@ -31,9 +30,9 @@ def crop_data(in_path, in_listPolygons, in_outPath, shpFile):
     fileMask = os.path.join(in_outPath, 'polygons.tif')
     if (not os.path.isdir(in_outPath)):
         os.makedirs(in_outPath)
-    gdal_rasterize(os.path.join(in_path, listDirs[0]), shpFile, fileMask)
+    geo_utils.gdal_rasterize(os.path.join(in_path, listDirs[0]), shpFile, fileMask)
     for polygonPos in range(len(in_listPolygons)):
-        gdal_translate(fileMask, os.path.join(in_outPath, str(polygonPos) + '_mask.tif'),
+        geo_utils.gdal_translate(fileMask, os.path.join(in_outPath, str(polygonPos) + '_mask.tif'),
                        in_listPolygons[polygonPos].GetEnvelope())
     for file in listDirs:
         for polygonPos in range(len(in_listPolygons)):
@@ -41,7 +40,7 @@ def crop_data(in_path, in_listPolygons, in_outPath, shpFile):
             outPath = os.path.join(in_outPath, file)
             if (not os.path.isdir(outPath)):
                 os.makedirs(outPath)
-            gdal_translate(filePath, os.path.join(outPath, str(polygonPos)+'.tif'),
+            geo_utils.gdal_translate(filePath, os.path.join(outPath, str(polygonPos)+'.tif'),
                            in_listPolygons[polygonPos].GetEnvelope())
 
 
@@ -57,9 +56,9 @@ def donwload_data_based_on_geojson(in_shape, in_year, in_month, in_num, in_outpa
         print('It is not possible to create a tmp folder! Please contact DEV team.')
         sys.exit()
 
-    polygons = readShapeFileFromListGeo(in_shape)
+    polygons = esri_shp.readShapeFileFromListGeo(in_shape)
     listGeos = [item['geometry'] for item in polygons]
-    multipolygon = get_multi_polygon(listGeos)
+    multipolygon = geo_utils.get_multi_polygon(listGeos)
 
     products_df = download_data(str(multipolygon.ConvexHull()), (date(in_year, in_month, 1),
                                             date(in_year, in_month, calendar.monthrange(in_year, in_month)[1])), in_num)
