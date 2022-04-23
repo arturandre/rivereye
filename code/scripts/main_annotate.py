@@ -210,9 +210,10 @@ if __name__ == '__main__':
             b08 = os.path.join(folder10m, dirb08)
             b04 = os.path.join(folder10m, dirb04)
             patches = os.listdir(b08)
-            for patch in patches:
+            for cnt, patch in enumerate(patches):
                 if not patch.endswith((".tif", ".tiff", ".png", ".jpg", ".jpeg")):
                     continue
+                print('Processing {}. {}%'.format(patch, round(cnt*100.0 / float(len(patches)))))
 
                 patch_value = patch.split('.')[0]
                 rast_ds = gdal.Open(os.path.join(b08, patch))
@@ -264,6 +265,8 @@ if __name__ == '__main__':
                 problematic[mask>0] = 1
                 create_multi_band_geotiff(problematic, rast_ds, 'tmp3.tif')
                 polygon_response('tmp3.tif', os.path.join(out_shape, patch_value+'_risk'))
+
+                print('Processed {}'.format(patch))
 
 
 
