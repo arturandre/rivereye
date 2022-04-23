@@ -117,11 +117,13 @@ area_counter = 0
 def generate_result(area_results):
     global area_counter
     area_counter += 1
+    area_results['cost'] = 10000 # Essa constante precisa ser alterada para algo mais factível e eventualmente algo dinâmico ou armazenado no BD
     area_results['area_counter'] = area_counter
     area_results['total_area'] = area_results['irregular_area'] +\
         area_results['river_area'] +\
         area_results['veg_area'] +\
         area_results['nveg_area']
+    area_results['total_area'] = int(area_results['total_area']*100)/100
     area_results['estimated_cost'] = area_results['irregular_area'] * area_results['cost']
     content = r"""\subsection{Area %(area_counter)s}
 

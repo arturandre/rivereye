@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12) (preloaded format=pdflatex 2022.3.17)  21 APR 2022 19:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12) (preloaded format=pdflatex 2022.3.17)  23 APR 2022 01:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -399,6 +399,10 @@ File: map.jpg Graphic file (type jpg)
 <use map.jpg>
 Package pdftex.def Info: map.jpg  used on input line 81.
 (pdftex.def)             Requested size: 226.48395pt x 118.61635pt.
+File: map.jpg Graphic file (type jpg)
+<use map.jpg>
+Package pdftex.def Info: map.jpg  used on input line 101.
+(pdftex.def)             Requested size: 226.48395pt x 118.61635pt.
  [1
 
 {C:/Users/Artur Oliveira/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <c:/
@@ -406,31 +410,37 @@ Users/Artur Oliveira/projetosdev/rivereye/code/temp/LogoRiverEye.jpg (PNG copy)
 > <c:/Users/Artur Oliveira/projetosdev/rivereye/code/temp/map.jpg>]
 File: LogoRiverEye.jpg Graphic file (type jpg)
 <use LogoRiverEye.jpg>
-Package pdftex.def Info: LogoRiverEye.jpg  used on input line 89.
+Package pdftex.def Info: LogoRiverEye.jpg  used on input line 109.
 (pdftex.def)             Requested size: 190.2476pt x 190.26111pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 92--99
+Underfull \hbox (badness 10000) in paragraph at lines 112--119
 
  []
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 111.
+(Font)              <14.4> on input line 131.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 111.
+(Font)              <8> on input line 131.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 111.
+(Font)              <6> on input line 131.
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 111.
+(hyperref)                removing `\@ifnextchar' on input line 131.
 
 [2] (cover.aux)
-Package rerunfilecheck Info: File `cover.out' has not changed.
-(rerunfilecheck)             Checksum: E37DFB87037077D20FEF04918AA02251;630.
+
+Package rerunfilecheck Warning: File `cover.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `cover.out':
+(rerunfilecheck)             Before: B3051339DFACF9570CFCE22A041895C5;630
+(rerunfilecheck)             After:  D435B50BBC4BEA46D2D30D323219E108;720.
  ) 
 Here is how much of TeX's memory you used:
- 8907 strings out of 478659
- 143759 string characters out of 2841618
- 445025 words of memory out of 3000000
+ 8908 strings out of 478659
+ 143773 string characters out of 2841618
+ 448025 words of memory out of 3000000
  26899 multiletter control sequences out of 15000+600000
  418825 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -444,9 +454,9 @@ a/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Us
 ers/Artur Oliveira/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
 /cmtt10.pfb>
 Output written on "c:\Users\Artur Oliveira\projetosdev\rivereye\code\temp\cover
-.pdf" (2 pages, 151605 bytes).
+.pdf" (2 pages, 152147 bytes).
 PDF statistics:
- 72 PDF objects out of 1000 (max. 8388607)
- 7 named destinations out of 1000 (max. 500000)
+ 73 PDF objects out of 1000 (max. 8388607)
+ 8 named destinations out of 1000 (max. 500000)
  35 words of extra memory for PDF output out of 10000 (max. 10000000)
 

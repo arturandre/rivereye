@@ -26,11 +26,12 @@ def Home2(request):
 @csrf_exempt
 def get_report(request):
     output_folder = r"temp"
-    area_results = json.loads(request.body.decode("utf-8"))
+    body_text = request.body.decode("utf-8")
+    area_results = json.loads(body_text)
 
     for area_result in area_results:
         area_result['fname'] = 'map.jpg' # Luan vai mudar isso para ser dinamico baseado no extent
-        area_result['cost'] = area_result['irregular_area']*10000 # Essa constante precisa ser alterada para algo mais factível e eventualmente algo dinâmico ou armazenado no BD
+        #area_result['cost'] = area_result['irregular_area']*10000 # Essa constante precisa ser alterada para algo mais factível e eventualmente algo dinâmico ou armazenado no BD
 
     # area_results = [{
     #     'gps_S' : 23.5558,
@@ -42,7 +43,10 @@ def get_report(request):
     #     'fname' : 'map.jpg',
     #     'cost' : 20000}]
     outfile = create_pdf_report(area_results, output_folder)
-    response = FileResponse(open(outfile, 'rb'))
+    response = FileResponse(open(outfile, 'rb'), content_type='application/pdf')
+    response["Content-Description"] = "File-Transfer"
+    response["Content-Transfer-Encoding"] = "binary"
+    response["Content-Disposition"] = "attachment; filename=" + "report.pdf"
 
     return response
 
@@ -62,7 +66,7 @@ def filter_by_bbox(request):
                 clipped = shapely.geometry.multipolygon.MultiPolygon([clipped])
             clipped = clipped.wkt
             geom.poly = MultiPolygon.from_ewkt(clipped)
-        result = serialize('geojson', result, geometry_field='poly', fields=('MYFLD',))
+        result = serialize('geojson', result, geometry_field='poly', fields=('MYFLD','AREA',))
         result = json.loads(result)
         results.append(result)
     return JsonResponse(results, safe=False)

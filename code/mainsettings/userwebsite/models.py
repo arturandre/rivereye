@@ -16,6 +16,7 @@ def load_database():
 
     mappings = {
         'MYFLD' : 'MYFLD', # model_field : shapefile_field
+        'AREA' : 'AREA', # model_field : shapefile_field
         'poly' : 'MULTIPOLYGON'
     }
 
@@ -32,6 +33,7 @@ class Riversides(models.Model):
     """
 
     MYFLD = models.IntegerField()
+    AREA = models.IntegerField()
 
     poly = models.MultiPolygonField(geography=False)
     #poly = models.PolygonField(geography=False)
