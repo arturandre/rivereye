@@ -24,13 +24,11 @@ def base_structure(results):
     \usepackage{hyperref}
 
     \fancypagestyle{firstpage}{
-        \fancyhf{}
         \renewcommand{\headrulewidth}{0pt}
         \renewcommand{\footrulewidth}{1pt}
     }
 
     \fancypagestyle{subsequentpages}{
-        \fancyhf{}
         \renewcommand{\headrulewidth}{1pt}
         \renewcommand{\footrulewidth}{1pt}
     }
