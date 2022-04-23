@@ -5,7 +5,7 @@ from affine import Affine
 from rasterio.features import rasterize
 from osgeo import gdal
 from osgeo import ogr, osr
-
+import math
 
 def read_image(in_path):
     dataset = rasterio.open(in_path)
@@ -102,3 +102,48 @@ def create_multi_band_geotiff(in_img, in_dataSet, in_outPath, in_outType=gdal.GD
         raise Exception("GDAL_MANAGER: Problem to compose geotiff: %s" % (str(e)))
 
 
+def shape_to_raster_based_on_extent(in_extent, in_shape_path, in_out_path, in_attribute = 'ATTRIBUTE=MYFLD',
+                                    in_xsize = None, in_ysize = None, in_projection = None):
+    if(in_xsize is None or in_ysize is None or in_projection is None):
+        #Sentinental 2 params for approximation
+        in_x_res = 0.00011502124818
+        in_y_res = -0.000091061392237
+        #4326 projection base
+        projection = 'GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],' \
+                     'AUTHORITY["EPSG","6326"]],PRIMEM["Greenwich",0],UNIT["degree",0.0174532925199433,AUTHORITY["EPSG","9122"]],' \
+                     'AXIS["Latitude",NORTH],AXIS["Longitude",EAST],AUTHORITY["EPSG","4326"]]'
+
+    gt = [np.min(in_extent[0:2]), in_x_res, 0.0, np.max(in_extent[2:4]), 0.0, in_y_res]
+    height = int(math.ceil(np.abs((in_extent[2] - in_extent[3]) / gt[-1])))
+    width = int(math.ceil(np.abs((in_extent[0] - in_extent[1]) / gt[1])))
+
+    gt = tuple(gt)
+    # Get vector metadata
+    mask_ds = ogr.Open(in_shape_path)
+    mask_lyr = mask_ds.GetLayer(0)
+
+    # Get EPSG info
+    rast_srs = osr.SpatialReference(wkt=projection)
+    rast_srs.AutoIdentifyEPSG()
+    rast_epsg = rast_srs.GetAttrValue('AUTHORITY', 1)
+
+    mask_srs = mask_lyr.GetSpatialRef()
+    mask_srs.AutoIdentifyEPSG()
+    mask_epsg = mask_srs.GetAttrValue('AUTHORITY', 1)
+
+    # Create raster to store mask
+    drv = gdal.GetDriverByName('GTiff')
+
+    mask_rast = drv.Create(in_out_path, width, height, 1, gdal.GDT_Float32,
+                           options=['TILED=YES', 'COMPRESS=DEFLATE'])
+    mask_rast.SetGeoTransform(gt)
+    mask_rast.SetProjection(rast_srs.ExportToWkt())
+    mask_band = mask_rast.GetRasterBand(1)
+    mask_band.Fill(0)
+
+    # Rasterize filtered layer into the mask tif
+    gdal.RasterizeLayer(mask_rast, [1], mask_lyr,
+                        options=[in_attribute])
+    mask_rast = None
+    mask_ds = None
+    rast_ds = None
