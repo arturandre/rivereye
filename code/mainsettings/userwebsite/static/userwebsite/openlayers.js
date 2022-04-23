@@ -8,13 +8,14 @@
 // import {get} from 'ol/proj';
 
 class Region{
-  constructor(gps_S, gps_W){
+  constructor(gps_S, gps_W, extent){
     this.gps_S = gps_S;
     this.gps_W = gps_W;
     this.irregular_area = 0;
     this.river_area = 0;
     this.veg_area = 0;
     this.nveg_area = 0;
+    this.extent = extent; //minx, miny, maxx, maxy
   }
 
   inc_irregular_area(amount)
@@ -327,7 +328,7 @@ async function get_geom_for_sel_bbox() {
     let extent = ol.proj.transformExtent(bbox.getGeometry().getExtent(), 'EPSG:3857', 'EPSG:4326');
     let centerX = (extent[0]+extent[2])/2;
     let centerY = (extent[1]+extent[3])/2;
-    region_areas[bbox_idx] = new Region(centerY, centerX);
+    region_areas[bbox_idx] = new Region(centerY, centerX, extent);
   }
 
   var response = await $.post(url, geoJsonStr, function (featureCollections) {

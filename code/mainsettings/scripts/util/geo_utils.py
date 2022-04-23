@@ -6,6 +6,7 @@ from rasterio.features import rasterize
 from osgeo import gdal
 from osgeo import ogr, osr
 import math
+from PIL import Image
 
 def read_image(in_path):
     dataset = rasterio.open(in_path)
@@ -102,11 +103,16 @@ def create_multi_band_geotiff(in_img, in_dataSet, in_outPath, in_outType=gdal.GD
         raise Exception("GDAL_MANAGER: Problem to compose geotiff: %s" % (str(e)))
 
 
+def mock_shape_extent():
+    x = r'C:\Users\Artur Oliveira\projetosdev\rivereye\code\mainsettings\mapretriever\static\mapretriever\demo\map0\0_risk.shp'
+    y = r'C:\Users\Artur Oliveira\projetosdev\rivereye\code\temp\map.tiff'
+    return shape_to_raster_based_on_extent([-47.46807756866092, -24.06611045358281, -47.42883822847743, -24.045727067751912], x, y)
+
 def shape_to_raster_based_on_extent(in_extent, in_shape_path, in_out_path, in_attribute = 'ATTRIBUTE=MYFLD',
                                     in_xsize = None, in_ysize = None, in_projection = None):
     """Compose a raster based on input shape and extent
     ----------
-    in_extent : list float [minx, maxx, miny, maxy]
+    in_extent : list float [minx, miny, maxx, maxy]
         List of float values taht describe the extent
     in_shape_path : str
         Directory from shape that will be rasterized
@@ -131,8 +137,8 @@ def shape_to_raster_based_on_extent(in_extent, in_shape_path, in_out_path, in_at
                      'AXIS["Latitude",NORTH],AXIS["Longitude",EAST],AUTHORITY["EPSG","4326"]]'
 
     gt = [np.min(in_extent[0:2]), in_x_res, 0.0, np.max(in_extent[2:4]), 0.0, in_y_res]
-    height = int(math.ceil(np.abs((in_extent[2] - in_extent[3]) / gt[-1])))
-    width = int(math.ceil(np.abs((in_extent[0] - in_extent[1]) / gt[1])))
+    height = int(math.ceil(np.abs((in_extent[1] - in_extent[3]) / gt[-1])))
+    width = int(math.ceil(np.abs((in_extent[0] - in_extent[2]) / gt[1])))
 
     gt = tuple(gt)
     # Get vector metadata
@@ -150,6 +156,7 @@ def shape_to_raster_based_on_extent(in_extent, in_shape_path, in_out_path, in_at
 
     # Create raster to store mask
     drv = gdal.GetDriverByName('GTiff')
+    #drv = gdal.GetDriverByName('JPEG')
 
     mask_rast = drv.Create(in_out_path, width, height, 1, gdal.GDT_Float32,
                            options=['TILED=YES', 'COMPRESS=DEFLATE'])
@@ -164,3 +171,8 @@ def shape_to_raster_based_on_extent(in_extent, in_shape_path, in_out_path, in_at
     mask_rast = None
     mask_ds = None
     rast_ds = None
+
+    im = Image.open(in_out_path)
+    im = np.array(im).astype('uint8')*255
+    im = Image.fromarray(im)
+    im.save(in_out_path[:-5] + ".jpg", "JPEG", quality=100)

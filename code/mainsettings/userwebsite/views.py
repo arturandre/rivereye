@@ -3,7 +3,7 @@ from http.client import HTTPResponse
 import json
 from django.shortcuts import render
 from userwebsite.gerar_relatorio.build_report import create_pdf_report
-from django.http import FileResponse, JsonResponse
+from django.http import FileResponse, HttpResponse, JsonResponse
 
 from django.contrib.gis.geos import MultiPolygon, Polygon
 from django.core.serializers import serialize
@@ -13,7 +13,11 @@ from shapely.ops import clip_by_rect
 
 from django.views.decorators.csrf import csrf_exempt
 
+from scripts.util.geo_utils import shape_to_raster_based_on_extent
+
 from .models import Riversides
+
+import os
 
 # Create your views here.
 
@@ -30,7 +34,17 @@ def get_report(request):
     area_results = json.loads(body_text)
 
     for area_result in area_results:
-        area_result['fname'] = 'map.jpg' # Luan vai mudar isso para ser dinamico baseado no extent
+        map_id = 0
+        def map_path(map_id):
+            return f"C:/Users/Artur Oliveira/projetosdev/rivereye/code/temp/map{map_id}"
+        while os.path.exists(map_path(map_id)+ ".jpg"):
+            map_id += 1
+        shape_to_raster_based_on_extent(
+            in_extent = area_result['extent'],
+            in_shape_path = r'C:\Users\Artur Oliveira\projetosdev\rivereye\code\mainsettings\mapretriever\static\mapretriever\demo\map0\0_risk.shp',
+            in_out_path = map_path(map_id) + ".tiff"
+        )
+        area_result['fname'] = map_path(map_id) + ".jpg" # Luan vai mudar isso para ser dinamico baseado no extent
         #area_result['cost'] = area_result['irregular_area']*10000 # Essa constante precisa ser alterada para algo mais factível e eventualmente algo dinâmico ou armazenado no BD
 
     # area_results = [{
@@ -49,6 +63,11 @@ def get_report(request):
     response["Content-Disposition"] = "attachment; filename=" + "report.pdf"
 
     return response
+
+def mock_shape_extent(request):
+    from scripts.util.geo_utils import mock_shape_extent
+    mock_shape_extent()
+    return HttpResponse("OK")
 
 @csrf_exempt
 def filter_by_bbox(request):

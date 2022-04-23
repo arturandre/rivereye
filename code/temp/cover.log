@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12) (preloaded format=pdflatex 2022.3.17)  23 APR 2022 01:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12) (preloaded format=pdflatex 2022.3.17)  23 APR 2022 04:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -268,7 +268,8 @@ ckend-pdftex.def
 File: l3backend-pdftex.def 2021-10-18 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count270
 \l__pdf_internal_box=\box50
-) (cover.aux)
+)
+(c:\Users\Artur Oliveira\projetosdev\rivereye\code\temp\cover.aux)
 \openout1 = `cover.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
@@ -369,11 +370,13 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 36.
 LaTeX Info: Redefining \pageref on input line 36.
 LaTeX Info: Redefining \nameref on input line 36.
- (cover.out) (cover.out)
+
+(c:\Users\Artur Oliveira\projetosdev\rivereye\code\temp\cover.out)
+(c:\Users\Artur Oliveira\projetosdev\rivereye\code\temp\cover.out)
 \@outlinefile=\write3
 \openout3 = `cover.out'.
 
-<LogoRiverEye.jpg, id=15, 200.75pt x 200.75pt>
+<LogoRiverEye.jpg, id=19, 200.75pt x 200.75pt>
 File: LogoRiverEye.jpg Graphic file (type jpg)
 <use LogoRiverEye.jpg>
 Package pdftex.def Info: LogoRiverEye.jpg  used on input line 39.
@@ -394,20 +397,28 @@ LaTeX Font Info:    Trying to load font information for TS1+bch on input line 7
 fd
 File: ts1bch.fd 2004/10/18 font definitions for TS1/bch.
 )
-<map.jpg, id=18, 992.70876pt x 519.9425pt>
-File: map.jpg Graphic file (type jpg)
-<use map.jpg>
-Package pdftex.def Info: map.jpg  used on input line 81.
-(pdftex.def)             Requested size: 226.48395pt x 118.61635pt.
-File: map.jpg Graphic file (type jpg)
-<use map.jpg>
-Package pdftex.def Info: map.jpg  used on input line 101.
-(pdftex.def)             Requested size: 226.48395pt x 118.61635pt.
+<C:/Users/Artur Oliveira/projetosdev/rivereye/code/temp/map1.jpg, id=22, 331.23
+75pt x 165.61874pt>
+File: C:/Users/Artur Oliveira/projetosdev/rivereye/code/temp/map1.jpg Graphic f
+ile (type jpg)
+<use C:/Users/Artur Oliveira/projetosdev/rivereye/code/temp/map1.jpg>
+Package pdftex.def Info: C:/Users/Artur Oliveira/projetosdev/rivereye/code/temp
+/map1.jpg  used on input line 81.
+(pdftex.def)             Requested size: 226.48395pt x 113.24092pt.
+<C:/Users/Artur Oliveira/projetosdev/rivereye/code/temp/map2.jpg, id=23, 199.74
+625pt x 184.69pt>
+File: C:/Users/Artur Oliveira/projetosdev/rivereye/code/temp/map2.jpg Graphic f
+ile (type jpg)
+<use C:/Users/Artur Oliveira/projetosdev/rivereye/code/temp/map2.jpg>
+Package pdftex.def Info: C:/Users/Artur Oliveira/projetosdev/rivereye/code/temp
+/map2.jpg  used on input line 101.
+(pdftex.def)             Requested size: 226.48395pt x 209.42151pt.
  [1
 
 {C:/Users/Artur Oliveira/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <c:/
 Users/Artur Oliveira/projetosdev/rivereye/code/temp/LogoRiverEye.jpg (PNG copy)
-> <c:/Users/Artur Oliveira/projetosdev/rivereye/code/temp/map.jpg>]
+> <C:/Users/Artur Oliveira/projetosdev/rivereye/code/temp/map1.jpg>]
+[2 <C:/Users/Artur Oliveira/projetosdev/rivereye/code/temp/map2.jpg>]
 File: LogoRiverEye.jpg Graphic file (type jpg)
 <use LogoRiverEye.jpg>
 Package pdftex.def Info: LogoRiverEye.jpg  used on input line 109.
@@ -427,21 +438,21 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\@ifnextchar' on input line 131.
 
-[2] (cover.aux)
+[3] (c:\Users\Artur Oliveira\projetosdev\rivereye\code\temp\cover.aux)
 
 Package rerunfilecheck Warning: File `cover.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `cover.out':
-(rerunfilecheck)             Before: B3051339DFACF9570CFCE22A041895C5;630
-(rerunfilecheck)             After:  D435B50BBC4BEA46D2D30D323219E108;720.
+(rerunfilecheck)             Before: D435B50BBC4BEA46D2D30D323219E108;720
+(rerunfilecheck)             After:  AB46AB4B5D517076A19E00B8A345EED0;720.
  ) 
 Here is how much of TeX's memory you used:
- 8908 strings out of 478659
- 143773 string characters out of 2841618
- 448025 words of memory out of 3000000
- 26899 multiletter control sequences out of 15000+600000
+ 8917 strings out of 478659
+ 144794 string characters out of 2841618
+ 446025 words of memory out of 3000000
+ 26906 multiletter control sequences out of 15000+600000
  418825 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,11n,63p,391b,324s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -454,9 +465,9 @@ a/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Us
 ers/Artur Oliveira/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
 /cmtt10.pfb>
 Output written on "c:\Users\Artur Oliveira\projetosdev\rivereye\code\temp\cover
-.pdf" (2 pages, 152147 bytes).
+.pdf" (3 pages, 104463 bytes).
 PDF statistics:
- 73 PDF objects out of 1000 (max. 8388607)
- 8 named destinations out of 1000 (max. 500000)
- 35 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 81 PDF objects out of 1000 (max. 8388607)
+ 9 named destinations out of 1000 (max. 500000)
+ 48 words of extra memory for PDF output out of 10000 (max. 10000000)
 
