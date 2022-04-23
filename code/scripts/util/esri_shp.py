@@ -1,4 +1,4 @@
-from osgeo import ogr, osr
+from osgeo import ogr, osr, gdal
 import copy
 
 def read_shape_file_from_list_geo(in_path):
@@ -16,17 +16,38 @@ def read_shape_file_from_list_geo(in_path):
 
     features = []
     for feature in layer:
-        geom = feature.GetGeometryRef()
-        #geo = GEOSGeometry(str(geom.ExportToWkt()))
+        try:
+            geom = feature.GetGeometryRef()
+            #geo = GEOSGeometry(str(geom.ExportToWkt()))
 
-        fieldsGeo = {}
-        for field in layerFieldNames:
-            fieldsGeo[field] = feature.GetField(field)
+            fieldsGeo = {}
+            for field in layerFieldNames:
+                fieldsGeo[field] = feature.GetField(field)
 
-        fieldsGeo['envelop'] = geom.GetEnvelope()
-        fieldsGeo['geometry'] = copy.deepcopy(geom)
-        features.append(fieldsGeo)
+            fieldsGeo['envelop'] = geom.GetEnvelope()
+            fieldsGeo['geometry'] = copy.deepcopy(geom)
+            features.append(fieldsGeo)
+        except Exception as e:
+            continue
 
     return features
 
 
+def polygon_response(raster, poligonized_shp):
+    src_ds = gdal.Open(raster)
+
+    srcband = src_ds.GetRasterBand(1)
+    #  create output datasource
+    dst_layername = poligonized_shp
+    drv = ogr.GetDriverByName("ESRI Shapefile")
+    dst_ds = drv.CreateDataSource( dst_layername + ".shp" )
+    targetprj = osr.SpatialReference(wkt=src_ds.GetProjection())
+    dst_layer = dst_ds.CreateLayer(dst_layername, srs = targetprj)
+    newField = ogr.FieldDefn('MYFLD', ogr.OFTInteger)
+    dst_layer.CreateField(newField)
+
+#    dst_layer.ImportFromEPSG(4326)
+#    dst_layer.SetProjection(proj)
+
+    gdal.Polygonize(srcband, None, dst_layer, 0, [], callback=None )
+    dst_ds.Destroy()
