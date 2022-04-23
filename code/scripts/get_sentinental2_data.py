@@ -1,30 +1,17 @@
 from sentinelsat import SentinelAPI, read_geojson, geojson_to_wkt
 import zipfile
 import os
-from util import esri_shp, geo_utils
+from esri_shp import readShapeFileFromListGeo
+from geo_utils import gdal_rasterize, gdal_translate, get_multi_polygon
 from datetime import date
 import calendar
 import argparse
 import sys
 
 
-api = SentinelAPI('luancasagrande', '6599Ufsc..')
+api = SentinelAPI('rivereye', 'Riv3r3e3.123x')
 
 def download_data(in_footprint, in_date, in_limit):
-    """Auxiliar function to query data usign API
-    ----------
-    in_footprint : str
-        String describing the requested polygons convex hull
-    in_date : tuple datetime
-        Reference and limit datetime
-    in_limit : int
-        Number of samples
-
-    Returns
-    -------
-        Dictionary describing the products sorted by cloud coverage percentage
-    """
-
     products = api.query(in_footprint,
                          date=in_date,
                          platformname='Sentinel-2',
@@ -39,25 +26,14 @@ def download_data(in_footprint, in_date, in_limit):
     return products_df_sorted
 
 
-def crop_data(in_path, in_listPolygons, in_outPath, in_shpFile):
-    """Crop rasters based on list of polygons and store in the output file
-    ----------
-    in_path : str
-        Input path
-    in_listPolygons : list of OGRgeometries
-        List of polygons used as reference to crop the data
-    in_outPath : str
-        Output path
-    in_shpFile : str
-        Path to shape file used as reference to calculate footprint and crop the data (input polygons)
-    """
+def crop_data(in_path, in_listPolygons, in_outPath, shpFile):
     listDirs = os.listdir(in_path)
     fileMask = os.path.join(in_outPath, 'polygons.tif')
     if (not os.path.isdir(in_outPath)):
         os.makedirs(in_outPath)
-    geo_utils.gdal_rasterize(os.path.join(in_path, listDirs[0]), in_shpFile, fileMask)
+    gdal_rasterize(os.path.join(in_path, listDirs[0]), shpFile, fileMask)
     for polygonPos in range(len(in_listPolygons)):
-        geo_utils.gdal_translate(fileMask, os.path.join(in_outPath, str(polygonPos) + '_mask.tif'),
+        gdal_translate(fileMask, os.path.join(in_outPath, str(polygonPos) + '_mask.tif'),
                        in_listPolygons[polygonPos].GetEnvelope())
     for file in listDirs:
         for polygonPos in range(len(in_listPolygons)):
@@ -65,24 +41,13 @@ def crop_data(in_path, in_listPolygons, in_outPath, in_shpFile):
             outPath = os.path.join(in_outPath, file)
             if (not os.path.isdir(outPath)):
                 os.makedirs(outPath)
-            geo_utils.gdal_translate(filePath, os.path.join(outPath, str(polygonPos)+'.tif'),
+            gdal_translate(filePath, os.path.join(outPath, str(polygonPos)+'.tif'),
                            in_listPolygons[polygonPos].GetEnvelope())
 
 
 def donwload_data_based_on_geojson(in_shape, in_year, in_month, in_num, in_outpath):
-    """Method that download, unzip, and move the data to outpath based on year, month, and number of samples
-        Parameters
-    ----------
-    in_shape : str
-        Path to shape file used as reference to calculate footprint and crop the data (input polygons)
-    in_year : int
-        Year used to query the data
-    in_month : int
-        Month used to query the data
-    in_num : int
-        Number of cases to be downloaded
-    in_outpath : str
-        Output path
+    """Method that handles arguments
+    :return parsed arguments
     """
     tmp_folder = 'tmp'
     try:
@@ -92,9 +57,9 @@ def donwload_data_based_on_geojson(in_shape, in_year, in_month, in_num, in_outpa
         print('It is not possible to create a tmp folder! Please contact DEV team.')
         sys.exit()
 
-    polygons = esri_shp.read_shape_file_from_list_geo(in_shape)
+    polygons = readShapeFileFromListGeo(in_shape)
     listGeos = [item['geometry'] for item in polygons]
-    multipolygon = geo_utils.get_multi_polygon(listGeos)
+    multipolygon = get_multi_polygon(listGeos)
 
     products_df = download_data(str(multipolygon.ConvexHull()), (date(in_year, in_month, 1),
                                             date(in_year, in_month, calendar.monthrange(in_year, in_month)[1])), in_num)
@@ -120,9 +85,7 @@ def donwload_data_based_on_geojson(in_shape, in_year, in_month, in_num, in_outpa
 
 def parse_args():
     """Method that handles arguments
-    Returns
-    -------
-        parsed arguments
+    :return parsed arguments
     """
     ap = argparse.ArgumentParser()
     ap.add_argument("-m", "--month", required=True, type=int,

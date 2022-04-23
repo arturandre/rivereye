@@ -32,6 +32,24 @@ def read_shape_file_from_list_geo(in_path):
 
     return features
 
+def add_area_per_polygon(in_shape):
+    driver = ogr.GetDriverByName("ESRI Shapefile")
+    dataSource = driver.Open(in_shape, 1)
+    layer = dataSource.GetLayer()
+    new_field = ogr.FieldDefn("AREA", ogr.OFTReal)
+    new_field.SetWidth(32)
+    new_field.SetPrecision(2)  # added line to set precision
+    layer.CreateField(new_field)
+
+    for feature in layer:
+        geom = feature.GetGeometryRef()
+        area = geom.GetArea()
+        print(area)
+        feature.SetField("Area", area)
+        layer.SetFeature(feature)
+
+    dataSource = None
+
 
 def polygon_response(raster, poligonized_shp):
     src_ds = gdal.Open(raster)
