@@ -2,3 +2,7 @@ Django
 django-cors-headers
 django-extensions
 psycopg2==2.9.3
+numpy
+affine pillow
+rasterio
+osgeo
