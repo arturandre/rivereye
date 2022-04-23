@@ -104,6 +104,23 @@ def create_multi_band_geotiff(in_img, in_dataSet, in_outPath, in_outType=gdal.GD
 
 def shape_to_raster_based_on_extent(in_extent, in_shape_path, in_out_path, in_attribute = 'ATTRIBUTE=MYFLD',
                                     in_xsize = None, in_ysize = None, in_projection = None):
+    """Compose a raster based on input shape and extent
+    ----------
+    in_extent : list float [minx, maxx, miny, maxy]
+        List of float values taht describe the extent
+    in_shape_path : str
+        Directory from shape that will be rasterized
+    in_out_path : str
+        Output directory where the file will be saved. Please note that this method is expecting that the path is valid
+    in_attribute : str
+        Reference attribute to burn raster (Attribute name that can differentiate the polygons)
+    in_xsize : float
+        x resolution. Please note that if projection is not based on 4326 this value is mandatory
+    in_ysize : float
+        y resolution. Please note that if projection is not based on 4326 this value is mandatory
+    in_ysize : str
+        4326 projection
+    """
     if(in_xsize is None or in_ysize is None or in_projection is None):
         #Sentinental 2 params for approximation
         in_x_res = 0.00011502124818
