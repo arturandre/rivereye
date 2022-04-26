@@ -184,8 +184,8 @@ def create_pdf_report(area_results, output_path=""):
     print(os.getcwd())
     print(" ".join(cmd))
 
-    proc = subprocess.Popen(cmd, shell = True )
-    #proc = subprocess.Popen(cmd, shell = False )
+    #proc = subprocess.Popen(cmd, shell = True )
+    proc = subprocess.Popen(cmd, shell = False )
 
     proc.communicate()
 

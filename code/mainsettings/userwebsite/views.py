@@ -32,7 +32,7 @@ def Home2(request):
 
 @csrf_exempt
 def get_report(request):
-    output_folder = os.path.join("mainsettings", "temp")
+    output_folder = os.path.join("temp")
     os.makedirs(output_folder, exist_ok=True)
     body_text = request.body.decode("utf-8")
     area_results = json.loads(body_text)
@@ -44,9 +44,11 @@ def get_report(request):
             return result
         while os.path.exists(map_path(map_id)+ ".jpg"):
             map_id += 1
+        base_shape_file = os.path.join(*(STATIC_ROOT.split('/')), *('/mapretriever/demo/map0/0_risk.shp'.split('/')))
+        print(base_shape_file)
         shape_to_raster_based_on_extent(
             in_extent = area_result['extent'],
-            in_shape_path = os.path.join('mainsettings', *(STATIC_ROOT.split('/')), *('/mapretriever/demo/map0/0_risk.shp'.split('/'))),
+            in_shape_path = base_shape_file,
             in_out_path = map_path(map_id) + ".tiff"
         )
         area_result['fname'] = map_path(map_id).replace('\\', '/') + ".jpg"
