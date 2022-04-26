@@ -29,6 +29,29 @@ changed depending on the user prefereces). After executing these lines one may a
 
 `http://localhost:8010/home`
 
+Alternatively it is possible to deploy it manually without the use of docker. This requires:
+
+  - downloading this repository via `https://github.com/arturandre/rivereye.git` 
+  - Installing the following python packages (we recommend the usage of a conda environment with python 3.8)
+    - the installation of [GeoDjango](https://docs.djangoproject.com/en/4.0/ref/contrib/gis/install/geolibs/)
+    - the installation of `rasterio` and `osgeo` (preferably using a conda environment)
+    - the installation of python packages (via `python -m pip install -r requirements`) at the `code/` directory
+  - [Postgres](https://www.postgresql.org/download/) database with the [PostGIS](https://postgis.net/install/) extension.
+
+After installing the required packages and softwares go to the directory `code/mainsetings` (not to be confused with `code/mainsetings/mainsetings` which correspond to the app not the project folder!), and initialize the database with the commands:
+
+```
+python manage.py makemigrations
+python manage.py migrate
+```
+
+After initializing the database the last step is to run the server with the command:
+
+`python manage.py runserver 0:8000`
+
+Notice that the command-line parameter `0:8000` means that (`0`) the server will respond to requests originated by any IP address at the port `8000`. In the local computer where the server is deployed one may access it using any internet browser and going for the address `http://localhost:8000/home` .
+
+
 ## The architecture of the project
 
 We employ the use of a server-client architecture. At the server side a Django based platform take user requests, manages the databases and provides responses for the users' requests. Besides that, scheduled services keep collecting asyncronously, satellite imagery and also keep processing those imagery in order to automatically detect rivers, water bodies, riparian and Permanent Preservation Areas. PPA areas that are violated (e.g. roads, buildings or bare soil near a river) are also detected and highlighted as irregular areas. The detection is performed by Deep Learning Networks fine-tuned with sattelite images annotatted at the pixel level.
