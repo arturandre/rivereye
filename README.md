@@ -39,5 +39,3 @@ We employ the use of a server-client architecture. At the server side a Django b
 
 ### Deep Learning Network training and deployment pipeline
 
-## Acknowledgements
-
