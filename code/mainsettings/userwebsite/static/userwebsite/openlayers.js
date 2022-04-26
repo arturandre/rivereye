@@ -7,6 +7,8 @@
 // import {Tile as TileLayer, Vector as VectorLayer} from 'ol/layer';
 // import {get} from 'ol/proj';
 
+const baseurl = `${location.protocol}//${location.hostname}${location.port?':'+location.port:''}`;
+
 class Region{
   constructor(gps_S, gps_W, extent){
     this.gps_S = gps_S;
@@ -178,9 +180,9 @@ let fldStyles = [
 ];
 
 async function load_demo0() {
-  let shpurl = "http://localhost:8000/static/mapretriever/demo/map0/0_out.shp";
-  let dbfurl = "http://localhost:8000/static/mapretriever/demo/map0/0_out.dbf";
-  let prjurl = "http://localhost:8000/static/mapretriever/demo/map0/0_out.prj";
+  let shpurl = `${baseurl}/static/mapretriever/demo/map0/0_out.shp`;
+  let dbfurl = `${baseurl}/static/mapretriever/demo/map0/0_out.dbf`;
+  let prjurl = `${baseurl}/static/mapretriever/demo/map0/0_out.prj`;
 
 
   let shpBuffer = await readBinaryFile(shpurl);
@@ -282,7 +284,7 @@ $('#btnReport').click(async function () {
   
   real_data = JSON.stringify(region_areas);
 
-  let url = "http://127.0.0.1:8000/get_report";
+  let url = `${baseurl}/get_report`;
 
   var oReq = new XMLHttpRequest();
   oReq.open("POST", url, true);
@@ -317,7 +319,7 @@ var region_areas = [];
 var region_counter_idx = 0;
 
 async function get_geom_for_sel_bbox() {
-  let url = "http://127.0.0.1:8000/filterbybbox";
+  let url = `${baseurl}/filterbybbox`;
 
   let format = new ol.format["GeoJSON"]();
   let bounding_boxes = source.getFeatures();

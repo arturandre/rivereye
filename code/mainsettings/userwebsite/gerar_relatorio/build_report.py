@@ -184,7 +184,10 @@ def create_pdf_report(area_results, output_path=""):
     cmd = ['pdflatex', '-interaction', 'nonstopmode', '-output-directory', output_path, cover_tex_file]
     # proc = subprocess.Popen('dir', cwd=os.getcwd())
     print(os.getcwd())
+    print(" ".join(cmd))
+
     proc = subprocess.Popen(cmd, shell = True )
+    #proc = subprocess.Popen(cmd, shell = False )
 
     proc.communicate()
 

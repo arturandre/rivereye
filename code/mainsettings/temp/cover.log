@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12) (preloaded format=pdflatex 2022.3.17)  23 APR 2022 04:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12) (preloaded format=pdflatex 2022.3.17)  25 APR 2022 22:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**./temp/cover.tex
-(temp/cover.tex
+**./mainsettings/temp/cover.tex
+(mainsettings/temp/cover.tex
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2021-11-22>
 (C:\Users\Artur Oliveira\AppData\Local\Programs\MiKTeX\tex/latex/base\article.c
@@ -269,7 +269,7 @@ File: l3backend-pdftex.def 2021-10-18 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count270
 \l__pdf_internal_box=\box50
 )
-(c:\Users\Artur Oliveira\projetosdev\rivereye\code\temp\cover.aux)
+(C:\Users\Artur Oliveira\projetosdev\rivereye\code\mainsettings\temp\cover.aux)
 \openout1 = `cover.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
@@ -290,7 +290,6 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 36.
 LaTeX Font Info:    ... okay on input line 36.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 36.
 LaTeX Font Info:    ... okay on input line 36.
-
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -371,12 +370,12 @@ LaTeX Info: Redefining \ref on input line 36.
 LaTeX Info: Redefining \pageref on input line 36.
 LaTeX Info: Redefining \nameref on input line 36.
 
-(c:\Users\Artur Oliveira\projetosdev\rivereye\code\temp\cover.out)
-(c:\Users\Artur Oliveira\projetosdev\rivereye\code\temp\cover.out)
+(C:\Users\Artur Oliveira\projetosdev\rivereye\code\mainsettings\temp\cover.out)
+(C:\Users\Artur Oliveira\projetosdev\rivereye\code\mainsettings\temp\cover.out)
 \@outlinefile=\write3
 \openout3 = `cover.out'.
 
-<LogoRiverEye.jpg, id=19, 200.75pt x 200.75pt>
+<LogoRiverEye.jpg, id=15, 200.75pt x 200.75pt>
 File: LogoRiverEye.jpg Graphic file (type jpg)
 <use LogoRiverEye.jpg>
 Package pdftex.def Info: LogoRiverEye.jpg  used on input line 39.
@@ -397,65 +396,54 @@ LaTeX Font Info:    Trying to load font information for TS1+bch on input line 7
 fd
 File: ts1bch.fd 2004/10/18 font definitions for TS1/bch.
 )
-<C:/Users/Artur Oliveira/projetosdev/rivereye/code/temp/map1.jpg, id=22, 331.23
-75pt x 165.61874pt>
-File: C:/Users/Artur Oliveira/projetosdev/rivereye/code/temp/map1.jpg Graphic f
-ile (type jpg)
-<use C:/Users/Artur Oliveira/projetosdev/rivereye/code/temp/map1.jpg>
-Package pdftex.def Info: C:/Users/Artur Oliveira/projetosdev/rivereye/code/temp
-/map1.jpg  used on input line 81.
-(pdftex.def)             Requested size: 226.48395pt x 113.24092pt.
-<C:/Users/Artur Oliveira/projetosdev/rivereye/code/temp/map2.jpg, id=23, 199.74
-625pt x 184.69pt>
-File: C:/Users/Artur Oliveira/projetosdev/rivereye/code/temp/map2.jpg Graphic f
-ile (type jpg)
-<use C:/Users/Artur Oliveira/projetosdev/rivereye/code/temp/map2.jpg>
-Package pdftex.def Info: C:/Users/Artur Oliveira/projetosdev/rivereye/code/temp
-/map2.jpg  used on input line 101.
-(pdftex.def)             Requested size: 226.48395pt x 209.42151pt.
+<mainsettings/temp/map8.jpg, id=18, 270.00874pt x 225.84375pt>
+File: mainsettings/temp/map8.jpg Graphic file (type jpg)
+<use mainsettings/temp/map8.jpg>
+Package pdftex.def Info: mainsettings/temp/map8.jpg  used on input line 81.
+(pdftex.def)             Requested size: 226.48395pt x 189.4421pt.
  [1
 
-{C:/Users/Artur Oliveira/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <c:/
-Users/Artur Oliveira/projetosdev/rivereye/code/temp/LogoRiverEye.jpg (PNG copy)
-> <C:/Users/Artur Oliveira/projetosdev/rivereye/code/temp/map1.jpg>]
-[2 <C:/Users/Artur Oliveira/projetosdev/rivereye/code/temp/map2.jpg>]
+{C:/Users/Artur Oliveira/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <C:/
+Users/Artur Oliveira/projetosdev/rivereye/code/mainsettings/temp/LogoRiverEye.j
+pg (PNG copy)> <./mainsettings/temp/map8.jpg>]
 File: LogoRiverEye.jpg Graphic file (type jpg)
 <use LogoRiverEye.jpg>
-Package pdftex.def Info: LogoRiverEye.jpg  used on input line 109.
+Package pdftex.def Info: LogoRiverEye.jpg  used on input line 89.
 (pdftex.def)             Requested size: 190.2476pt x 190.26111pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 112--119
+Underfull \hbox (badness 10000) in paragraph at lines 92--99
 
  []
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 131.
+(Font)              <14.4> on input line 111.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 131.
+(Font)              <8> on input line 111.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 131.
+(Font)              <6> on input line 111.
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 131.
+(hyperref)                removing `\@ifnextchar' on input line 111.
 
-[3] (c:\Users\Artur Oliveira\projetosdev\rivereye\code\temp\cover.aux)
+[2]
+(C:\Users\Artur Oliveira\projetosdev\rivereye\code\mainsettings\temp\cover.aux)
 
 Package rerunfilecheck Warning: File `cover.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `cover.out':
-(rerunfilecheck)             Before: D435B50BBC4BEA46D2D30D323219E108;720
-(rerunfilecheck)             After:  AB46AB4B5D517076A19E00B8A345EED0;720.
+(rerunfilecheck)             Before: C1A025CC4E28C366F0A21ADFAF4DBF59;630
+(rerunfilecheck)             After:  E37DFB87037077D20FEF04918AA02251;630.
  ) 
 Here is how much of TeX's memory you used:
- 8917 strings out of 478659
- 144794 string characters out of 2841618
- 446025 words of memory out of 3000000
- 26906 multiletter control sequences out of 15000+600000
+ 8907 strings out of 478659
+ 144262 string characters out of 2841618
+ 445025 words of memory out of 3000000
+ 26899 multiletter control sequences out of 15000+600000
  418825 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,11n,63p,391b,324s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,11n,63p,404b,324s stack positions out of 5000i,500n,10000p,200000b,80000s
 {C:/Users/Artur Oliveira/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8
 r.enc}<C:/Users/Artur Oliveira/AppData/Local/Programs/MiKTeX/fonts/type1/bitstr
 ea/charter/bchb8a.pfb><C:/Users/Artur Oliveira/AppData/Local/Programs/MiKTeX/fo
@@ -464,10 +452,10 @@ ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Artur Oliveir
 a/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Us
 ers/Artur Oliveira/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
 /cmtt10.pfb>
-Output written on "c:\Users\Artur Oliveira\projetosdev\rivereye\code\temp\cover
-.pdf" (3 pages, 104463 bytes).
+Output written on "C:\Users\Artur Oliveira\projetosdev\rivereye\code\mainsettin
+gs\temp\cover.pdf" (2 pages, 94668 bytes).
 PDF statistics:
- 81 PDF objects out of 1000 (max. 8388607)
- 9 named destinations out of 1000 (max. 500000)
- 48 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 72 PDF objects out of 1000 (max. 8388607)
+ 7 named destinations out of 1000 (max. 500000)
+ 35 words of extra memory for PDF output out of 10000 (max. 10000000)
 

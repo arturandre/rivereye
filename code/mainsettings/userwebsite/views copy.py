@@ -2,10 +2,7 @@ from ast import Mult
 from http.client import HTTPResponse
 import json
 from django.shortcuts import render
-
 from userwebsite.gerar_relatorio.build_report import create_pdf_report
-from mainsettings.settings import STATIC_ROOT
-
 from django.http import FileResponse, HttpResponse, JsonResponse
 
 from django.contrib.gis.geos import MultiPolygon, Polygon
@@ -32,24 +29,28 @@ def Home2(request):
 
 @csrf_exempt
 def get_report(request):
-    output_folder = os.path.join("mainsettings", "temp")
-    os.makedirs(output_folder, exist_ok=True)
+    output_folder = r"temp"
     body_text = request.body.decode("utf-8")
     area_results = json.loads(body_text)
 
     for area_result in area_results:
         map_id = 0
         def map_path(map_id):
-            result = os.path.join(output_folder, f"map{map_id}")
-            return result
+            return f"C:/Users/Artur Oliveira/projetosdev/rivereye/code/temp/map{map_id}"
         while os.path.exists(map_path(map_id)+ ".jpg"):
             map_id += 1
         shape_to_raster_based_on_extent(
             in_extent = area_result['extent'],
-            in_shape_path = os.path.join('mainsettings', *(STATIC_ROOT.split('/')), *('/mapretriever/demo/map0/0_risk.shp'.split('/'))),
+            in_shape_path = r'C:\Users\Artur Oliveira\projetosdev\rivereye\code\mainsettings\mapretriever\static\mapretriever\demo\map0\0_risk.shp',
             in_out_path = map_path(map_id) + ".tiff"
         )
-        area_result['fname'] = map_path(map_id).replace('\\', '/') + ".jpg"
+        area_result['fname'] = map_path(map_id) + ".jpg" # Luan vai mudar isso para ser dinamico baseado no extent
+        #area_result['cost'] = area_result['irregular_area']*10000 # Essa constante precisa ser alterada para algo mais factível e eventualmente algo dinâmico ou armazenado no BD
+
+    # area_results = [{
+    #     'gps_S' : 23.5558,
+    #     'gps_W' : 46.6396,
+    #     'irregular_area' : 2,
     #     'river_area' : 1,
     #     'veg_area' : 2,
     #     'nveg_area' : 5,
