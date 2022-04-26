@@ -31,5 +31,13 @@ changed depending on the user prefereces). After executing these lines one may a
 
 ## The architecture of the project
 
+We employ the use of a server-client architecture. At the server side a Django based platform take user requests, manages the databases and provides responses for the users' requests. Besides that, scheduled services keep collecting asyncronously, satellite imagery and also keep processing those imagery in order to automatically detect rivers, water bodies, riparian and Permanent Preservation Areas. PPA areas that are violated (e.g. roads, buildings or bare soil near a river) are also detected and highlighted as irregular areas. The detection is performed by Deep Learning Networks fine-tuned with sattelite images annotatted at the pixel level.
+
+![Use case diagram with flow diagram](documentation/Use-cases.drawio.png)
+
+### Image Collecting pipeline
+
+### Deep Learning Network training and deployment pipeline
+
 ## Acknowledgements
 
