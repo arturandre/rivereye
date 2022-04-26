@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12) (preloaded format=pdflatex 2022.3.17)  25 APR 2022 22:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12) (preloaded format=pdflatex 2022.3.17)  25 APR 2022 22:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -257,7 +257,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 \Hy@SectionHShift=\skip58
 )
 LaTeX Font Info:    Trying to load font information for OT1+bch on input line 3
-6.
+4.
 
 (C:\Users\Artur Oliveira\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1bch.
 fd
@@ -272,24 +272,24 @@ File: l3backend-pdftex.def 2021-10-18 L3 backend support: PDF output (pdfTeX)
 (C:\Users\Artur Oliveira\projetosdev\rivereye\code\mainsettings\temp\cover.aux)
 \openout1 = `cover.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -350,7 +350,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 pdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Package hyperref Info: Link coloring OFF on input line 36.
+Package hyperref Info: Link coloring OFF on input line 34.
 
 (C:\Users\Artur Oliveira\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\namer
 ef.sty
@@ -366,64 +366,71 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count277
 )
-LaTeX Info: Redefining \ref on input line 36.
-LaTeX Info: Redefining \pageref on input line 36.
-LaTeX Info: Redefining \nameref on input line 36.
+LaTeX Info: Redefining \ref on input line 34.
+LaTeX Info: Redefining \pageref on input line 34.
+LaTeX Info: Redefining \nameref on input line 34.
 
 (C:\Users\Artur Oliveira\projetosdev\rivereye\code\mainsettings\temp\cover.out)
 (C:\Users\Artur Oliveira\projetosdev\rivereye\code\mainsettings\temp\cover.out)
 \@outlinefile=\write3
 \openout3 = `cover.out'.
 
-<LogoRiverEye.jpg, id=15, 200.75pt x 200.75pt>
+<LogoRiverEye.jpg, id=11, 200.75pt x 200.75pt>
 File: LogoRiverEye.jpg Graphic file (type jpg)
 <use LogoRiverEye.jpg>
-Package pdftex.def Info: LogoRiverEye.jpg  used on input line 39.
+Package pdftex.def Info: LogoRiverEye.jpg  used on input line 37.
 (pdftex.def)             Requested size: 190.2476pt x 190.26111pt.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 40.
+(Font)              <7> on input line 38.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 40.
+(Font)              <5> on input line 38.
 
-Underfull \hbox (badness 10000) in paragraph at lines 42--49
+Underfull \hbox (badness 10000) in paragraph at lines 40--47
 
  []
 
 LaTeX Font Info:    Trying to load font information for TS1+bch on input line 7
-4.
+2.
 
 (C:\Users\Artur Oliveira\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1bch.
 fd
 File: ts1bch.fd 2004/10/18 font definitions for TS1/bch.
 )
-<mainsettings/temp/map8.jpg, id=18, 270.00874pt x 225.84375pt>
-File: mainsettings/temp/map8.jpg Graphic file (type jpg)
-<use mainsettings/temp/map8.jpg>
-Package pdftex.def Info: mainsettings/temp/map8.jpg  used on input line 81.
-(pdftex.def)             Requested size: 226.48395pt x 189.4421pt.
- [1
+<mainsettings/temp/map0.jpg, id=14, 286.06876pt x 221.82875pt>
+File: mainsettings/temp/map0.jpg Graphic file (type jpg)
+<use mainsettings/temp/map0.jpg>
+Package pdftex.def Info: mainsettings/temp/map0.jpg  used on input line 79.
+(pdftex.def)             Requested size: 226.48395pt x 175.62526pt.
+ [1{C:/Users/Artur Oliveira/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}
 
-{C:/Users/Artur Oliveira/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <C:/
-Users/Artur Oliveira/projetosdev/rivereye/code/mainsettings/temp/LogoRiverEye.j
-pg (PNG copy)> <./mainsettings/temp/map8.jpg>]
+ <C:/Users/Artur Oliveira/projetosdev/rivereye/code/mainsettings/temp/LogoRiver
+Eye.jpg (PNG copy)> <./mainsettings/temp/map0.jpg>]
 File: LogoRiverEye.jpg Graphic file (type jpg)
 <use LogoRiverEye.jpg>
-Package pdftex.def Info: LogoRiverEye.jpg  used on input line 89.
+Package pdftex.def Info: LogoRiverEye.jpg  used on input line 87.
 (pdftex.def)             Requested size: 190.2476pt x 190.26111pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 92--99
+Underfull \hbox (badness 10000) in paragraph at lines 90--97
 
  []
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 111.
+(Font)              <14.4> on input line 109.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 111.
+(Font)              <8> on input line 109.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 111.
+(Font)              <6> on input line 109.
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 111.
+(hyperref)                removing `\@ifnextchar' on input line 109.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.02745pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.02745pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-0.02745pt}.
 
 [2]
 (C:\Users\Artur Oliveira\projetosdev\rivereye\code\mainsettings\temp\cover.aux)
@@ -433,29 +440,34 @@ Package rerunfilecheck Warning: File `cover.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `cover.out':
-(rerunfilecheck)             Before: C1A025CC4E28C366F0A21ADFAF4DBF59;630
+(rerunfilecheck)             Before: ED1723FDE551BCCE4A4CF77A5645383A;540
 (rerunfilecheck)             After:  E37DFB87037077D20FEF04918AA02251;630.
  ) 
 Here is how much of TeX's memory you used:
- 8907 strings out of 478659
- 144262 string characters out of 2841618
- 445025 words of memory out of 3000000
- 26899 multiletter control sequences out of 15000+600000
- 418825 words of font info for 52 fonts, out of 8000000 for 9000
+ 8914 strings out of 478659
+ 144327 string characters out of 2841618
+ 445045 words of memory out of 3000000
+ 26902 multiletter control sequences out of 15000+600000
+ 422351 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,11n,63p,404b,324s stack positions out of 5000i,500n,10000p,200000b,80000s
-{C:/Users/Artur Oliveira/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8
-r.enc}<C:/Users/Artur Oliveira/AppData/Local/Programs/MiKTeX/fonts/type1/bitstr
-ea/charter/bchb8a.pfb><C:/Users/Artur Oliveira/AppData/Local/Programs/MiKTeX/fo
-nts/type1/bitstrea/charter/bchr8a.pfb><C:/Users/Artur Oliveira/AppData/Local/Pr
-ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Artur Oliveir
-a/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Us
-ers/Artur Oliveira/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
-/cmtt10.pfb>
+ 60i,19n,63p,404b,397s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist
+, replaced by a fixed one
+
+{C:/Users/Artur Oliveira/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.
+enc}<C:/Users/Artur Oliveira/AppData/Local/Programs/MiKTeX/fonts/type1/bitstrea
+/charter/bchb8a.pfb><C:/Users/Artur Oliveira/AppData/Local/Programs/MiKTeX/font
+s/type1/bitstrea/charter/bchr8a.pfb><C:/Users/Artur Oliveira/AppData/Local/Prog
+rams/MiKTeX/fonts/type1/bitstrea/charter/bchr8a.pfb><C:/Users/Artur Oliveira/Ap
+pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users
+/Artur Oliveira/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cm
+sy7.pfb><C:/Users/Artur Oliveira/AppData/Local/Programs/MiKTeX/fonts/type1/publ
+ic/amsfonts/cm/cmtt10.pfb>
 Output written on "C:\Users\Artur Oliveira\projetosdev\rivereye\code\mainsettin
-gs\temp\cover.pdf" (2 pages, 94668 bytes).
+gs\temp\cover.pdf" (2 pages, 106331 bytes).
 PDF statistics:
- 72 PDF objects out of 1000 (max. 8388607)
- 7 named destinations out of 1000 (max. 500000)
- 35 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 76 PDF objects out of 1000 (max. 8388607)
+ 8 named destinations out of 1000 (max. 500000)
+ 27 words of extra memory for PDF output out of 10000 (max. 10000000)
 

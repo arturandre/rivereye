@@ -1,0 +1,2 @@
+docker run -d -it --name rivereyecontainer -p 127.0.0.1:8010:8000/tcp -w /root/rivereye/code/mainsettings/ --entrypoint /bin/bash arturandre:rivereye
+docker exec -w /root/rivereye/code/mainsettings/ rivereyecontainer bash ./start-server.sh
