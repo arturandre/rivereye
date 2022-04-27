@@ -1,8 +1,8 @@
 from sentinelsat import SentinelAPI, read_geojson, geojson_to_wkt
 import zipfile
 import os
-from esri_shp import readShapeFileFromListGeo
-from geo_utils import gdal_rasterize, gdal_translate, get_multi_polygon
+from util.esri_shp import read_shape_file_from_list_geo
+from util.geo_utils import gdal_rasterize, gdal_translate, get_multi_polygon
 from datetime import date
 import calendar
 import argparse
@@ -57,7 +57,7 @@ def donwload_data_based_on_geojson(in_shape, in_year, in_month, in_num, in_outpa
         print('It is not possible to create a tmp folder! Please contact DEV team.')
         sys.exit()
 
-    polygons = readShapeFileFromListGeo(in_shape)
+    polygons = read_shape_file_from_list_geo(in_shape)
     listGeos = [item['geometry'] for item in polygons]
     multipolygon = get_multi_polygon(listGeos)
 
