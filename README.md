@@ -1,5 +1,7 @@
 # RiverEye
 
+(Oliveira, Artur Andre & Casagrande, Luan C. & Soler, Diego Pavan)
+
 Welcome! The RiverEye platform collects and displays riparian forests and vegetation alongside riverbanks, or the lack of them.
 
 Riparian forests are essential for the life and maintanance of rivers. Natural causes and human interference can lead to
