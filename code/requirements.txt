@@ -6,6 +6,6 @@ numpy
 affine
 pillow
 shapely
+scikit-image==0.19.1
 rasterio
 osgeo
-scikit-image==0.19.1
