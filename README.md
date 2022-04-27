@@ -20,7 +20,7 @@ case-specific scenarios.
 
 ## Quick demo
 
-[Here](http://rivereye.inacity.org/home) you can access our self-hosted online platform directly!
+[Here](http://rivereye.inacity.org/home) you can access our self-hosted online platform directly! A teaser video with a small tutorial can be seen [here](https://youtu.be/76P7_DIyBpc).
 
 [![image](https://github.com/arturandre/rivereye/blob/d83f9ec74a0acba7ef4835c7dce4ba66c8b75a6d/documentation/coverpicture.png)](http://rivereye.inacity.org/home)
 
