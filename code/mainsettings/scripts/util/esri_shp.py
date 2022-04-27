@@ -44,7 +44,6 @@ def add_area_per_polygon(in_shape):
     for feature in layer:
         geom = feature.GetGeometryRef()
         area = geom.GetArea()
-        print(area)
         feature.SetField("Area", area)
         layer.SetFeature(feature)
 
