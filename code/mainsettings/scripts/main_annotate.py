@@ -1,5 +1,5 @@
 from osgeo import gdal
-from util.esri_shp import read_shape_file_from_list_geo, polygon_response
+from util.esri_shp import read_shape_file_from_list_geo, polygon_response, add_area_per_polygon
 from util.geo_utils import *
 from util.ml_utils import *
 import argparse
@@ -81,7 +81,7 @@ def class_definition_based_on_clusters(in_labels, in_index_ref, in_num_clusters,
     num_pixels = np.zeros(in_num_classes)
 
     for i in range(0, in_num_classes):
-        num_pixels[i] = np.sum(in_valida_test == (i+2))
+        num_pixels[i] = np.sum(in_valida_test == (i+1))
 
     perc = np.zeros((in_num_clusters, in_num_classes))
     class_def = []
@@ -103,7 +103,7 @@ def class_definition_based_on_clusters(in_labels, in_index_ref, in_num_clusters,
     return output, thresholds, class_def
 
 
-def get_thresholds(in_index, in_reference,  in_nclasses):
+def get_thresholds(in_raster, in_reference,  in_nclasses):
     """Optimize number of clusters based on reference
     ----------
     in_labels : raster
@@ -122,36 +122,43 @@ def get_thresholds(in_index, in_reference,  in_nclasses):
     list_acc_kappa = [[] for i in range(nOutput)]
     list_min_weight = np.zeros(nOutput)
 
+
     try:
         criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 10, 1.0)
         flags = cv2.KMEANS_PP_CENTERS
 
         cont = 0
 
-        for nclusters in range(in_nclasses, 15):
-            compactness, labels, centers = cv2.kmeans(in_index.flatten().astype(np.float32), nclusters, None,
-                                                          criteria, 10, flags)
-            labels = labels.reshape((in_index.shape))
-            [img_out, thresholds, class_def] = class_definition_based_on_clusters(labels, in_index, nclusters, in_nclasses,
-                                                                                in_reference)
+        for band_num in range(in_raster.shape[2]):
+            for nclusters in range(in_nclasses, 10):
+                index = in_raster[:,:,band_num]
+                compactness, labels, centers = cv2.kmeans(index.flatten().astype(np.float32), nclusters, None,
+                                                              criteria, 10, flags)
+                labels = labels.reshape((index.shape))
+                [img_out, thresholds, class_def] = class_definition_based_on_clusters(labels, index, nclusters, in_nclasses,
+                                                                                    in_reference)
 
-            kappa, acc = calc_fitness(img_out, in_reference, in_nclasses, removeZeroFlag=True)
-            if np.isnan(kappa):
-                kappa = 1
-            weighted_value = kappa * 0.75 + acc * 0.25
-
-            if (np.sum(weighted_value > list_min_weight) > 0):
-                posAux = np.where(list_min_weight == np.min(list_min_weight))[0][0]
-                list_best_comb[posAux] = [None, None, copy.deepcopy(thresholds),
-                                        copy.deepcopy(class_def)]
-                list_min_weight[posAux] = weighted_value
-                list_acc_kappa[posAux] = [kappa, acc]
-                best_out = copy.deepcopy(img_out)
+                kappa, acc = calc_fitness(img_out, in_reference, in_nclasses, removeZeroFlag=True)
+                if np.isnan(kappa):
+                    kappa = 1
+                weighted_value = kappa * 0.75 + acc * 0.25
+                if (np.sum(weighted_value > list_min_weight) > 0):
+                    posAux = np.where(list_min_weight == np.min(list_min_weight))[0][0]
+                    list_best_comb[posAux] = [None, None, copy.deepcopy(thresholds),
+                                            copy.deepcopy(class_def)]
+                    list_min_weight[posAux] = weighted_value
+                    list_acc_kappa[posAux] = [kappa, acc]
+                    best_out = copy.deepcopy(img_out)
+                    print(nclusters, weighted_value)
             cont += 1
     except Exception as e:
         print('Error kmeans', e)
     return list_best_comb, list_acc_kappa, list_min_weight, best_out
 
+def cleanData(in_data):
+    in_data[np.isnan(in_data)] = 0
+    in_data[np.isinf(in_data)] = 0
+    return in_data
 
 def parse_args():
     """Method that handles arguments
@@ -207,11 +214,13 @@ if __name__ == '__main__':
             dirs = os.listdir(folder10m)
             dirb08 = get_string(dirs, ['_B08_'])
             dirb04 = get_string(dirs, ['_B04_'])
+            dirb03 = get_string(dirs, ['_B03_'])
             b08 = os.path.join(folder10m, dirb08)
             b04 = os.path.join(folder10m, dirb04)
+            b03 = os.path.join(folder10m, dirb03)
             patches = os.listdir(b08)
             for cnt, patch in enumerate(patches):
-                if not patch.endswith((".tif", ".tiff", ".png", ".jpg", ".jpeg")):
+                if not patch.endswith((".tif", ".tiff", ".png", ".jpg", ".jp2", ".jpeg")):
                     continue
                 print('Processing {}. {}%'.format(patch, round(cnt*100.0 / float(len(patches)))))
 
@@ -221,54 +230,57 @@ if __name__ == '__main__':
 
                 b08raster = read_image(os.path.join(b08, patch))[:,:,0]
                 b04raster = read_image(os.path.join(b04, patch))[:,:,0]
+                b03raster = read_image(os.path.join(b03, patch))[:,:,0]
                 ndvi = np.divide((b08raster-b04raster),(b08raster+b04raster))
+                ndvi[ndvi>1] = 1
+                ndvi = cleanData(ndvi)
+                ndwi = np.divide((b08raster-b03raster),(b08raster+b03raster))
+                ndwi[ndwi>1] = 1
+                ndwi = cleanData(ndwi)
+
+                aux = np.zeros([ndvi.shape[0], ndvi.shape[1], 4])
+                aux[:, :, 0] = ndvi
+                aux[:, :, 1] = ndwi
+                aux[:, :, 2] = b08raster
+                aux[:, :, 3] = b04raster
 
                 gdal_rasterize(os.path.join(b08, patch), shpFile, 'tmp2.tif', in_attribute='ATTRIBUTE=id')
                 mask = read_image('tmp2.tif')[:,:,0]
-                ndvi[ndvi>1] = 1
-                ndvi[np.isnan(ndvi)] = 0
-                ndvi[np.isinf(ndvi)] = 0
-                listBestComb, listAccKappa, listMinWeight, bestOut = get_thresholds(ndvi, mask,3)
-                bestOut[b08raster<2300] = 4
-                bo = copy.deepcopy(bestOut)
-                bestOut[bestOut==2] = 0
-                create_multi_band_geotiff(bestOut, rast_ds, 'tmp3.tif')
-                polygon_response('tmp3.tif', os.path.join(out_shapes, patch))
+                water = (mask == 4).astype(np.uint8)
+                forestry = (mask == 2).astype(np.uint8)
+                other = (mask == 3).astype(np.uint8)
 
-                water = np.zeros(bo.shape)
-                water[bo==4] = 1
+                aux_mask = np.zeros(mask.shape)
+                aux_mask[forestry>0] = 1
+                aux_mask[other>0] = 2
+                listBestComb, listAccKappa, listMinWeight, bestOutForestry = get_thresholds(aux, aux_mask+1, len(np.unique(aux_mask)))
 
-                outputs = cv2.connectedComponentsWithStats((bo == 4).astype(np.uint8), connectivity=8,
+                aux_mask_wa = np.zeros(mask.shape)
+                aux_mask_wa[water>0] = 1
+                aux_mask_wa[aux_mask>0] = 2
+                listBestComb, listAccKappa, listMinWeight, bestOutWater = get_thresholds(aux, aux_mask_wa+1, len(np.unique(aux_mask_wa)))
+
+                pred_water = (bestOutWater==2)
+                bestOutForestry[pred_water>0]= 1
+                water = (pred_water).astype(np.uint8)
+
+                outputs = cv2.connectedComponentsWithStats(water, connectivity=8,
                                                            ltype=cv2.CV_32S)
                 areas = outputs[2][:, 4]
                 res = np.where(areas <= 10)
                 areas_identified = np.in1d(outputs[1], res).astype(np.uint8)
                 areas_identified = np.reshape(areas_identified, water.shape)
                 water[areas_identified>0] = 0
-                #defined experimentally
+
                 kernel = np.ones((21, 21), np.uint8)
                 img_dilation = cv2.dilate(water, kernel, iterations=1)
-                dif = img_dilation-water
-                water[dif>0] = 2
-                create_multi_band_geotiff(water, rast_ds, 'tmp3.tif')
-                polygon_response('tmp3.tif', os.path.join(out_shape, patch_value+'_buffer'))
-                problematic = np.zeros(bo.shape)
-                mask = np.multiply(dif, bo==3)
-                outputs = cv2.connectedComponentsWithStats((mask > 0).astype(np.uint8), connectivity=8,
-                                                           ltype=cv2.CV_32S)
-                areas = outputs[2][:, 4 ]
-                #remove noise - data labelling
-                res = np.where(areas <= 20)
-                areas_identified = np.in1d(outputs[1], res).astype(np.uint8)
-                areas_identified = np.reshape(areas_identified, water.shape)
-                mask[areas_identified>0] = 0
-                problematic[mask>0] = 1
-                create_multi_band_geotiff(problematic, rast_ds, 'tmp3.tif')
-                polygon_response('tmp3.tif', os.path.join(out_shape, patch_value+'_risk'))
 
-                print('Processed {}'.format(patch))
+                rast_ds = gdal.Open(os.path.join(b08, patch))
+                gt = rast_ds.GetGeoTransform()
 
-
-
-
+                bestOutForestry[img_dilation == 0] = 0
+                bestOutForestry[pred_water>0] = 1
+                create_multi_band_geotiff(bestOutForestry, rast_ds, 'tmp3.tif')
+                polygon_response('tmp3.tif', os.path.join(out_shapes, str(patch.split('.')[0]) + '_out'))
+                add_area_per_polygon(os.path.join(out_shapes, str(patch.split('.')[0]) + '_out.shp'))
 
