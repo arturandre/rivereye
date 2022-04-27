@@ -5,6 +5,8 @@ from affine import Affine
 from rasterio.features import rasterize
 from osgeo import gdal
 from osgeo import ogr, osr
+from skimage import io
+from skimage.transform import resize, rotate
 import math
 from PIL import Image
 
