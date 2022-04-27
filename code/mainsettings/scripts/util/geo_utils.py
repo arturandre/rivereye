@@ -7,6 +7,9 @@ from osgeo import gdal
 from osgeo import ogr, osr
 import math
 from PIL import Image
+from skimage.transform import rotate, resize
+from skimage import io
+
 
 def read_image(in_path):
     dataset = rasterio.open(in_path)
