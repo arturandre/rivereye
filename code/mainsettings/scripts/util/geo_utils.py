@@ -9,8 +9,7 @@ from skimage import io
 from skimage.transform import resize, rotate
 import math
 from PIL import Image
-from skimage.transform import rotate, resize
-from skimage import io
+
 
 
 def read_image(in_path):
