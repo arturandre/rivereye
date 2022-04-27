@@ -123,8 +123,8 @@ var map = new ol.Map({
     // center: ol.proj.fromLonLat([-47.48258,-24.03863]), //próximo
     // center: [-5280244.47922211, -2760133.33496918],
     // center: ol.proj.fromLonLat([-52.7343,-21.9795]), // novo shapefile maior (próximo)
-    center: [-5821829.875653882, -2586723.587656486], // novo shapefile maior
-    zoom: 13
+    center: [-5856423.325857955, -2581753.956145716], // novo shapefile maior
+    zoom: 12
   })
 });
 
