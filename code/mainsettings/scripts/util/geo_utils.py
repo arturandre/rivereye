@@ -108,6 +108,35 @@ def mock_shape_extent():
     y = r'C:\Users\Artur Oliveira\projetosdev\rivereye\code\temp\map.tiff'
     return shape_to_raster_based_on_extent([-47.46807756866092, -24.06611045358281, -47.42883822847743, -24.045727067751912], x, y)
 
+def format_raster_to_report(in_raster, in_path, in_dict_color_map = None):
+    """Format input raster to match report requirements
+    ----------
+    in_raster : 2D raster
+    in_path : str
+        Path where the formatted raster will be stored
+    in_out_path : str
+        Output directory where the file will be saved. Please note that this method is expecting that the path is valid
+    in_dict_color_map : dict
+        Dict that maps ids to output color
+    """
+    if(in_dict_color_map is None):
+        in_dict_color_map = {1: [165, 191, 221],
+                             2: [0, 255, 0],
+                             3: [255, 0, 0]}
+
+    if (in_raster.shape[0] > in_raster.shape[1]):
+        in_raster = rotate(in_raster, 90)
+
+    raster_out = np.zeros([in_raster.shape[0], in_raster.shape[1], 3], np.uint8)
+    for key in in_dict_color_map:
+        mask = in_raster == key
+        raster_out[mask] = in_dict_color_map[key]
+
+    raster_out = resize(raster_out, (400,600), anti_aliasing=True, preserve_range=True)
+
+    io.imsave(in_path, raster_out.astype(np.uint8))
+
+
 def shape_to_raster_based_on_extent(in_extent, in_shape_path, in_out_path, in_attribute = 'ATTRIBUTE=MYFLD',
                                     in_xsize = None, in_ysize = None, in_projection = None):
     """Compose a raster based on input shape and extent
@@ -127,6 +156,7 @@ def shape_to_raster_based_on_extent(in_extent, in_shape_path, in_out_path, in_at
     in_ysize : str
         4326 projection
     """
+
     if(in_xsize is None or in_ysize is None or in_projection is None):
         #Sentinental 2 params for approximation
         in_x_res = 0.00011502124818
@@ -156,7 +186,6 @@ def shape_to_raster_based_on_extent(in_extent, in_shape_path, in_out_path, in_at
 
     # Create raster to store mask
     drv = gdal.GetDriverByName('GTiff')
-    #drv = gdal.GetDriverByName('JPEG')
 
     mask_rast = drv.Create(in_out_path, width, height, 1, gdal.GDT_Float32,
                            options=['TILED=YES', 'COMPRESS=DEFLATE'])
@@ -171,8 +200,8 @@ def shape_to_raster_based_on_extent(in_extent, in_shape_path, in_out_path, in_at
     mask_rast = None
     mask_ds = None
     rast_ds = None
+    im = io.imread(in_out_path)
+    format_raster_to_report(im, in_out_path[:-5] + ".jpg")
 
-    im = Image.open(in_out_path)
-    im = np.array(im).astype('uint8')*255
-    im = Image.fromarray(im)
-    im.save(in_out_path[:-5] + ".jpg", "JPEG", quality=100)
+
+
