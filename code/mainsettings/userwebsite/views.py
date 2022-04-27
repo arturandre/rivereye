@@ -32,19 +32,30 @@ def Home2(request):
 
 @csrf_exempt
 def get_report(request):
-    output_folder = os.path.join('mainsettings', "temp")
+    docker_settings = True
+    if docker_settings:
+        output_folder = os.path.join("temp")
+    else:
+        output_folder = os.path.join('mainsettings', "temp")
     os.makedirs(output_folder, exist_ok=True)
     body_text = request.body.decode("utf-8")
     area_results = json.loads(body_text)
 
+
     for area_result in area_results:
         map_id = 0
         def map_path(map_id):
-            result = os.path.join('mainsettings', output_folder, f"map{map_id}")
+            if docker_settings:
+                result = os.path.join(output_folder, f"map{map_id}")
+            else:
+                result = os.path.join('mainsettings', output_folder, f"map{map_id}")
             return result
         while os.path.exists(map_path(map_id)+ ".jpg"):
             map_id += 1
-        base_shape_file = os.path.join('mainsettings', *(STATIC_ROOT.split('/')), *('/mapretriever/demo/map0/0_out.shp'.split('/')))
+        if docker_settings:
+            base_shape_file = os.path.join(*(STATIC_ROOT.split('/')), *('/mapretriever/demo/map0/0_out.shp'.split('/')))
+        else:
+            base_shape_file = os.path.join('mainsettings', *(STATIC_ROOT.split('/')), *('/mapretriever/demo/map0/0_out.shp'.split('/')))
         print(base_shape_file)
         shape_to_raster_based_on_extent(
             in_extent = area_result['extent'],
