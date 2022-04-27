@@ -33,7 +33,7 @@ class Riversides(models.Model):
     """
 
     MYFLD = models.IntegerField()
-    AREA = models.IntegerField()
+    AREA = models.BigIntegerField()
 
     poly = models.MultiPolygonField(geography=False)
     #poly = models.PolygonField(geography=False)
