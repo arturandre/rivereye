@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12) (preloaded format=pdflatex 2022.3.17)  26 APR 2022 21:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12) (preloaded format=pdflatex 2022.3.17)  8 MAY 2022 13:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -402,23 +402,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 40--47
 
  []
 
-LaTeX Font Info:    Trying to load font information for TS1+bch on input line 7
-2.
+[1{C:/Users/Artur Oliveira/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}
 
-(C:\Users\Artur Oliveira\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1bch.
-fd
-File: ts1bch.fd 2004/10/18 font definitions for TS1/bch.
-)
-<mainsettings/temp/map1.jpg, id=17, 602.25pt x 401.5pt>
-File: mainsettings/temp/map1.jpg Graphic file (type jpg)
-<use mainsettings/temp/map1.jpg>
-Package pdftex.def Info: mainsettings/temp/map1.jpg  used on input line 79.
-(pdftex.def)             Requested size: 226.48395pt x 150.99097pt.
- [1{C:/Users/Artur Oliveira/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}
+]
 
- <./mainsettings/temp/map1.jpg>]
-
-LaTeX Warning: File `LogoRiverEye.jpg' not found on input line 87.
+LaTeX Warning: File `LogoRiverEye.jpg' not found on input line 67.
 
 
 ! Package pdftex.def Error: File `LogoRiverEye.jpg' not found: using draft sett
@@ -428,25 +416,48 @@ See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.87 ...ics[width=0.7\linewidth]{LogoRiverEye.jpg}
+l.67 ...ics[width=0.7\linewidth]{LogoRiverEye.jpg}
                                                   
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 90--97
+Underfull \hbox (badness 10000) in paragraph at lines 70--77
 
  []
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 109.
+(Font)              <14.4> on input line 89.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 109.
+(Font)              <8> on input line 89.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 109.
+(Font)              <6> on input line 89.
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 109.
+(hyperref)                removing `\@ifnextchar' on input line 89.
+
+LaTeX Font Info:    Trying to load font information for TS1+bch on input line 9
+6.
+
+(C:\Users\Artur Oliveira\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1bch.
+fd
+File: ts1bch.fd 2004/10/18 font definitions for TS1/bch.
+)
+
+! LaTeX Error: Invalid UTF-8 byte sequence (ção).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.96 ...} - Rua Green, 123, Estradas com vegetação
+                                                  , Sao Paulo/SP, CEP: 12345...
+
+The document does not appear to be in UTF-8 encoding.
+Try adding \UseRawInputEncoding as the first line of the file
+or specify an encoding such as \usepackage [latin1]{inputenc}
+in the document preamble.
+Alternatively, save the file in UTF-8 using your editor or another tool
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -457,21 +468,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.02745pt}.
 
 [2] (C:\Users\Artur Oliveira\projetosdev\rivereye\code\temp\cover.aux)
-
-Package rerunfilecheck Warning: File `cover.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `cover.out':
-(rerunfilecheck)             Before: E37DFB87037077D20FEF04918AA02251;630
-(rerunfilecheck)             After:  B3051339DFACF9570CFCE22A041895C5;630.
+Package rerunfilecheck Info: File `cover.out' has not changed.
+(rerunfilecheck)             Checksum: ED1723FDE551BCCE4A4CF77A5645383A;540.
  ) 
 Here is how much of TeX's memory you used:
- 8951 strings out of 478659
- 144868 string characters out of 2841618
- 445048 words of memory out of 3000000
- 26927 multiletter control sequences out of 15000+600000
- 422351 words of font info for 56 fonts, out of 8000000 for 9000
+ 8937 strings out of 478659
+ 144577 string characters out of 2841618
+ 444045 words of memory out of 3000000
+ 26918 multiletter control sequences out of 15000+600000
+ 417895 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,19n,63p,391b,397s stack positions out of 5000i,500n,10000p,200000b,80000s
 
@@ -483,14 +488,11 @@ enc}<C:/Users/Artur Oliveira/AppData/Local/Programs/MiKTeX/fonts/type1/bitstrea
 /charter/bchb8a.pfb><C:/Users/Artur Oliveira/AppData/Local/Programs/MiKTeX/font
 s/type1/bitstrea/charter/bchr8a.pfb><C:/Users/Artur Oliveira/AppData/Local/Prog
 rams/MiKTeX/fonts/type1/bitstrea/charter/bchr8a.pfb><C:/Users/Artur Oliveira/Ap
-pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users
-/Artur Oliveira/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cm
-sy7.pfb><C:/Users/Artur Oliveira/AppData/Local/Programs/MiKTeX/fonts/type1/publ
-ic/amsfonts/cm/cmtt10.pfb>
+pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
 Output written on "C:\Users\Artur Oliveira\projetosdev\rivereye\code\temp\cover
-.pdf" (2 pages, 91846 bytes).
+.pdf" (2 pages, 64652 bytes).
 PDF statistics:
- 78 PDF objects out of 1000 (max. 8388607)
- 8 named destinations out of 1000 (max. 500000)
- 30 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 62 PDF objects out of 1000 (max. 8388607)
+ 7 named destinations out of 1000 (max. 500000)
+ 17 words of extra memory for PDF output out of 10000 (max. 10000000)
 
