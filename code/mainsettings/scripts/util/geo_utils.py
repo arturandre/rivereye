@@ -36,7 +36,8 @@ def rasterize_list_geometries(in_list, in_shapeOut, in_geoTransform, in_dtype = 
         return np.zeros(in_shapeOut, dtype=in_dtype)
 
 
-def gdal_rasterize(src_rast, mask_vect, in_outPath, in_attribute = 'ATTRIBUTE=MYFLD'):
+#def gdal_rasterize(src_rast, mask_vect, in_outPath, in_attribute = 'ATTRIBUTE=MYFLD'):
+def gdal_rasterize(src_rast, mask_vect, in_outPath, in_attribute = None):
     rast_ds = gdal.Open(src_rast)
     gt = rast_ds.GetGeoTransform()
     b = rast_ds.GetRasterBand(1)
@@ -73,8 +74,9 @@ def gdal_rasterize(src_rast, mask_vect, in_outPath, in_attribute = 'ATTRIBUTE=MY
     mask_band.Fill(0)
 
     # Rasterize filtered layer into the mask tif
-    gdal.RasterizeLayer(mask_rast, [1], mask_lyr,
-                        options=[in_attribute])
+    # gdal.RasterizeLayer(mask_rast, [1], mask_lyr,
+    #                     options=in_attribute)
+    gdal.RasterizeLayer(mask_rast, [1], mask_lyr)
     mask_rast = None
     mask_ds = None
     rast_ds = None

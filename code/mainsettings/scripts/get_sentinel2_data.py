@@ -126,6 +126,8 @@ if __name__ == '__main__':
         donwload_data_based_on_geojson(in_shape, y, m, num, out_path)
     except Exception as e:
         print('Problem when downloading/composing the dataset. Please contact the DEV team.')
+        with open('error.log', "a+") as f:
+            f.write(str(e))
         sys.exit()
 
     print('Data downloaded and saved in the following folder: ' + (out_path))
