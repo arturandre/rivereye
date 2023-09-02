@@ -83,10 +83,11 @@ WSGI_APPLICATION = 'mainsettings.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': "postgres",
+        'NAME': "rivereyedb",
         'USER': "postgres",
         'PASSWORD': "1234",
-        'HOST': "localhost",
+        #'HOST': "localhost",
+        'HOST': "172.19.0.3",
         'POST': "5432",
     }
 }
