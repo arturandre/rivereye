@@ -91,16 +91,17 @@ def base_structure(results):
 
 
 
-    \section{Recommended Deflorestation Services:\protect\footnote{For illustration only}}
+    \section{Recommended Reforestation Services:\protect\footnote{For illustration only}}
     \begin{itemize}
-        \item Green Sao Paulo - Website: \url{https://greensaopaulo.com.br/} - Rua Evans, 627, Vila Esperanca, Sao Paulo/SP, CEP: 03648-020 - (11) 94330-4540 - \href{mailto:contato@greensaopaulo.com.br}{contato@greensaopaulo.com.br}
-        \item BioFlora Comercial - Website: \url{http://www.viveirobioflora.com.br/} - Rod. Piracicaba, Piracicaba/SP, CEP: 13420-280 - (19) 3414-4763 - \href{mailto:vendas@viveirobioflora.com.br}{vendas@viveirobioflora.com.br}
-        \item Forte Florestal - Website: \url{https://forteflorestal.com/} - Av. Vitorio Ongaratto, 926, Sala 04 Jacupiranga/SP, CEP: 11940-000 -  (11) 96905-0354 - \href{mailto:atendimento@forteflorestal.com.br}{atendimento@forteflorestal.com.br}
-        \item Dantas Ambiental - Website: \url{https://dantasambiental.com.br/} - Rua Napoleao Selmi Dei, 676, Sala 02, Vila Harmonia, Araraquara/SP, CEP: 14802-500 -\\ (11) 99789-0543 - \href{mailto:comercial@dantasambiental.com.br}{comercial@dantasambiental.com.br}
-        \item Programa Nascentes - Website: \url{http://www.programanascentes.sp.gov.br/}
-
-
-        
+        %%\item Green Sao Paulo - Website: \url{https://greensaopaulo.com.br/} - Rua Evans, 627, Vila Esperanca, Sao Paulo/SP, CEP: 03648-020 - (11) 94330-4540 - \href{mailto:contato@greensaopaulo.com.br}{contato@greensaopaulo.com.br}
+        %%\item BioFlora Comercial - Website: \url{http://www.viveirobioflora.com.br/} - Rod. Piracicaba, Piracicaba/SP, CEP: 13420-280 - (19) 3414-4763 - \href{mailto:vendas@viveirobioflora.com.br}{vendas@viveirobioflora.com.br}
+        %%\item Forte Florestal - Website: \url{https://forteflorestal.com/} - Av. Vitorio Ongaratto, 926, Sala 04 Jacupiranga/SP, CEP: 11940-000 -  (11) 96905-0354 - \href{mailto:atendimento@forteflorestal.com.br}{atendimento@forteflorestal.com.br}
+        %%\item Dantas Ambiental - Website: \url{https://dantasambiental.com.br/} - Rua Napoleao Selmi Dei, 676, Sala 02, Vila Harmonia, Araraquara/SP, CEP: 14802-500 -\\ (11) 99789-0543 - \href{mailto:comercial@dantasambiental.com.br}{comercial@dantasambiental.com.br}
+        %%\item Programa Nascentes - Website: \url{http://www.programanascentes.sp.gov.br/}
+        \item Green SA - Website: \url{https://greensa.com/} - Rua Green, 123, Estradas com vegetação, Sao Paulo/SP, CEP: 12345-678 - (12) 99999-1111 - \href{mailto:contato@greesa.com}{contato@greesa.com}
+        \item Reforesting Company - Website: \url{http://www.rforest.org/} - Rod. Verde, 1234, Piracicaba/SP, CEP: 12345-678 - (12) 99999-1111 - \href{mailto:vendas@rforest.org}{vendas@rforest.org}
+        \item Grow New Trees - Website: \url{https://gntrees.com/} - Av. Florestal, 123, Jacupiranga/SP, CEP: 12345-678 -  (12) 99999-1111 - \href{mailto:atendimento@gntrees.com}{atendimento@gntrees.com}
+        \item Riparian Zones Back - Website: \url{https://riparianzonesback.com/} - Rua Ciliar, Vila do Rio, Araraquara/SP, CEP: 12345-678 -\\ (12) 99999-1111 - \href{mailto:comercial@riparianzonesback.com}{comercial@riparianzonesback.com}
     \end{itemize}
 
     \vspace{25pt}

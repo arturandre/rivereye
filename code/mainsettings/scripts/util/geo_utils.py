@@ -36,7 +36,8 @@ def rasterize_list_geometries(in_list, in_shapeOut, in_geoTransform, in_dtype = 
         return np.zeros(in_shapeOut, dtype=in_dtype)
 
 
-def gdal_rasterize(src_rast, mask_vect, in_outPath, in_attribute = 'ATTRIBUTE=MYFLD'):
+#def gdal_rasterize(src_rast, mask_vect, in_outPath, in_attribute = 'ATTRIBUTE=MYFLD'):
+def gdal_rasterize(src_rast, mask_vect, in_outPath, in_attribute = None):
     rast_ds = gdal.Open(src_rast)
     gt = rast_ds.GetGeoTransform()
     b = rast_ds.GetRasterBand(1)
@@ -65,16 +66,25 @@ def gdal_rasterize(src_rast, mask_vect, in_outPath, in_attribute = 'ATTRIBUTE=MY
     # Create raster to store mask
     drv = gdal.GetDriverByName('GTiff')
 
-    mask_rast = drv.Create(in_outPath,b.XSize,b.YSize, 1, gdal.GDT_Float32,
+    if(in_attribute is not None):
+        mask_rast = drv.Create(in_outPath,b.XSize,b.YSize, 1, gdal.GDT_Float32,
                         options=['TILED=YES','COMPRESS=DEFLATE'])
+    else:
+        mask_rast = drv.Create(in_outPath, b.XSize, b.YSize, 1, gdal.GDT_Byte,
+                               options=['TILED=YES', 'COMPRESS=DEFLATE', 'NBITS=1'])
     mask_rast.SetGeoTransform(gt)
     mask_rast.SetProjection(rast_srs.ExportToWkt())
     mask_band = mask_rast.GetRasterBand(1)
-    mask_band.Fill(0)
 
     # Rasterize filtered layer into the mask tif
-    gdal.RasterizeLayer(mask_rast, [1], mask_lyr,
-                        options=[in_attribute])
+    if(in_attribute is not None):
+        mask_band.Fill(0)
+        gdal.RasterizeLayer(mask_rast, [1], mask_lyr,
+                            options=[in_attribute])
+    else:
+        mask_band.Fill(1)
+        gdal.RasterizeLayer(mask_rast, [1], mask_lyr, burn_values=[0],
+                            options=['ALL_TOUCHED=TRUE'])
     mask_rast = None
     mask_ds = None
     rast_ds = None

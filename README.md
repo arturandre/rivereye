@@ -20,7 +20,7 @@ case-specific scenarios.
 
 ## Quick demo
 
-[Here](http://rivereye.inacity.org/home) you can access our self-hosted online platform directly!
+[Here](http://rivereye.inacity.org/home) you can access our self-hosted online platform directly! A teaser video with a small tutorial can be seen [here](https://youtu.be/76P7_DIyBpc).
 
 [![image](https://github.com/arturandre/rivereye/blob/d83f9ec74a0acba7ef4835c7dce4ba66c8b75a6d/documentation/coverpicture.png)](http://rivereye.inacity.org/home)
 
@@ -64,7 +64,7 @@ Notice that the command-line parameter `0:8000` means that (`0`) the server will
 
 We employ the use of a server-client architecture. At the server side a Django based platform take user requests, manages the databases and provides responses for the users' requests. Besides that, scheduled services keep collecting asyncronously, satellite imagery and also keep processing those imagery in order to automatically detect rivers, water bodies, riparian and Permanent Preservation Areas. PPA areas that are violated (e.g. roads, buildings or bare soil near a river) are also detected and highlighted as irregular areas. The detection is performed by Deep Learning Networks fine-tuned with sattelite images annotatted at the pixel level.
 
-A brief description of the dataset and the deep learning method employed can be found in the following sections, and the technical report can be read [here](https://github.com/arturandre/rivereye/blob/66942455d3b3db753d8c9ac24938bedac739207e/documentation/rivereye_dataset_deeplearning.pdf). Below we present a simplified use-case diagram with a flow diagram of the platform, a full presentation can be found [here](https://docs.google.com/presentation/d/1mhvZ96G_OREdubDSuNa2BB54PcE73r3XKmdRuMetGYg/edit?usp=sharing).
+A brief description of the dataset and the deep learning method employed can be found in the following sections, and the technical report can be read [here](https://github.com/arturandre/rivereye/blob/66942455d3b3db753d8c9ac24938bedac739207e/documentation/rivereye_dataset_deeplearning.pdf). Below we present a simplified use-case diagram with a flow diagram of the platform, a full presentation can be found [here](https://docs.google.com/presentation/d/1mhvZ96G_OREdubDSuNa2BB54PcE73r3XKmdRuMetGYg/edit?usp=sharing). For Data for testing - ML/CV, please refer to the following link [here](https://github.com/arturandre/rivereye/blob/8af97f8d760b619bb055a48c6771f96c19d1e01e/documentation/data_for_testing_ML_CV.pdf).
 
 ![Use case diagram with flow diagram](documentation/Use-cases.drawio.png)
 
